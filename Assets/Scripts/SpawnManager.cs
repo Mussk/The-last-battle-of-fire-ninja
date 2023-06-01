@@ -2,51 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.Rendering;
-
 using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
    
     private Camera mainCamera;
+    public GameObject[] enemies;
     private readonly float spawnY = 0.7f;
+    public static List<GameObject> spawnedEnemies;
 
-    [Header("Pooling Options")]
-    private static SpawnManager SharedInstance;
-    private List<GameObject> pooledEnemies;
+
     [SerializeField]
-    private GameObject[] enemiesToPool;
-    [SerializeField]
-    private int amountToPool;
+    private int maxSpawnedEnemies;
 
 
-    void Awake()
-    {
-
-        SharedInstance = this;
-
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        //initialize enemies pooler
-        pooledEnemies = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
-        {
-            tmp = Instantiate(enemiesToPool[Random.Range(0,2)]);
-            tmp.SetActive(false);
-            pooledEnemies.Add(tmp);
-        }
-
 
         mainCamera = Camera.main;
 
-        InvokeRepeating("SpawnEnemy", 1.5f, 5f);
+        spawnedEnemies = new List<GameObject>();
 
+        InvokeRepeating("SpawnEnemy", 1.5f, 5f);
         
     }
 
@@ -59,12 +40,7 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnEnemy() {
 
-        GameObject enemy = GetPooledEnemy();
-
-
-        if(enemy != null) { 
-
-           
+        if (spawnedEnemies.Count < maxSpawnedEnemies) { 
 
             float[] validChoices = new float[] { -0.5f,-0,4f,-0.3f,-0.2f,-0.1f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f };
             float[] randPos = new float[2]; 
@@ -80,14 +56,14 @@ public class SpawnManager : MonoBehaviour
             v3Pos.x = Mathf.Min(Mathf.Max(v3Pos.x,-23),23);
             v3Pos.z = Mathf.Min(Mathf.Max(v3Pos.z, -23), 23);
 
+            int randomIndex = Random.Range(0, enemies.Length);
+
             Vector3 spawnPos = new Vector3(v3Pos.x,
             spawnY,
             v3Pos.z);
 
-            enemy.transform.position = spawnPos;
-
-            enemy.SetActive(true);
+            spawnedEnemies.Add(
+            Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].transform.rotation));
         }
     }
-
 }

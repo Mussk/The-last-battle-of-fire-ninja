@@ -29,7 +29,9 @@ public class AnimationHandler : MonoBehaviour
     {
         if (character is Enemy) 
         {
-            character.gameObject.SetActive(false);
+            SpawnManager.spawnedEnemies.Remove(character.gameObject);
+            Destroy(character.gameObject);
+           
         }
         else
         {
