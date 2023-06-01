@@ -8,41 +8,33 @@ public class GameEndScript : MonoBehaviour
 {
 
     [SerializeField]
-    private TextMeshProUGUI gameOverText;
+    private GameObject gameOverBackgorund;
 
     [SerializeField]
-    private GameObject gameOverBackgorund;
+    private GameObject GameEndUIObject;
 
     [SerializeField]
     private UIBlur uIBlur;
 
     void Start()
     {
-       
+        GameEndUIObject.SetActive(false);
     }
 
     void Update()
     {
-        if (gameOverBackgorund.gameObject.activeSelf)
+        if (gameOverBackgorund.gameObject.activeInHierarchy)
         {
 
             uIBlur.Intensity += 0.7f * Time.deltaTime;
         
         }
 
-        if (uIBlur.Intensity == 1)
-        {
-
-            Time.timeScale = 0;
-        
-        }
     }
 
     public void InitializeGameEnd()
     {
-        gameOverBackgorund.gameObject.SetActive(true);
-      
-        gameOverText.gameObject.SetActive(true);
 
+        GameEndUIObject.SetActive(true);
     }
 }
