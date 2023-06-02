@@ -4,29 +4,30 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameEndScript : MonoBehaviour
+public class GameEndScript : MonoBehaviour, IUIWindow
 {
 
     [SerializeField]
-    private GameObject gameOverBackgorund;
+    private GameObject _gameEndUIObject;
 
     [SerializeField]
-    private GameObject GameEndUIObject;
+    private UIBlur _uIBlur;
 
-    [SerializeField]
-    private UIBlur uIBlur;
+    public GameObject UIWindowObject => _gameEndUIObject;
+
+    public UIBlur UIBlur => _uIBlur;
 
     void Start()
     {
-        GameEndUIObject.SetActive(false);
+        _gameEndUIObject.SetActive(false);
     }
 
     void Update()
     {
-        if (gameOverBackgorund.gameObject.activeInHierarchy)
+        if (_gameEndUIObject.activeInHierarchy)
         {
 
-            uIBlur.Intensity += 0.7f * Time.deltaTime;
+            _uIBlur.Intensity += 0.7f * Time.deltaTime;
         
         }
 
@@ -35,6 +36,6 @@ public class GameEndScript : MonoBehaviour
     public void InitializeGameEnd()
     {
 
-        GameEndUIObject.SetActive(true);
+        _gameEndUIObject.SetActive(true);
     }
 }
