@@ -84,7 +84,7 @@ public class PlayerController : Character, IShootable, IHasHealth
     // Start is called before the first frame update
     void Update()
     {
-        if (healthSystem.currentHealth > 0) {
+        if (healthSystem.currentHealth > 0 && !PauseMenu.IsPaused) {
             
             GatherInput();
             Look();
