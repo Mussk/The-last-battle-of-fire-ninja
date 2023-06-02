@@ -1,3 +1,4 @@
+using Krivodeling.UI.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +13,18 @@ public class UIButtonListeners : MonoBehaviour
     [SerializeField]
     private Button newGameButton;
 
+    [SerializeField]
+    private Button resumeButton;
+
+    [SerializeField]
+    private PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         
         newGameButton.onClick.AddListener(delegate { LoadNewSceneOnClick(0); });
-        
+        resumeButton.onClick.AddListener(delegate { UnpauseGameOnClick(pauseMenu); });
     }
 
     // Update is called once per frame
@@ -43,5 +49,18 @@ public class UIButtonListeners : MonoBehaviour
 
         SceneManager.LoadScene(sceneBuildIndex);
     
+    }
+
+    private void UnpauseGameOnClick(PauseMenu pauseMenu)
+    {
+
+        PauseMenu.IsPaused = false;
+
+        pauseMenu.UIWindowObject.SetActive(false);
+
+        pauseMenu.UIBlur.Intensity = 0;
+
+        Time.timeScale = 1;
+
     }
 }
