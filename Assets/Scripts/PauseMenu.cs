@@ -2,6 +2,7 @@ using Krivodeling.UI.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour, IUIWindow
 {
@@ -19,12 +20,23 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     public UIBlur UIBlur => _uIBlur;
 
 
+    [Header("Buttons")]
+    [SerializeField]
+    private Button mainMenuButton;
+    [SerializeField]
+    private Button resumeButton;
+
+
     // Start is called before the first frame update
     void Start()
     {
         _pauseMenuUIObject.SetActive(true);
         _pauseMenuUIObject.SetActive(false);
         IsPaused = false;
+
+        resumeButton.onClick.AddListener(UnpauseGameOnClick);
+
+        
     }
 
     // Update is called once per frame
@@ -58,5 +70,19 @@ public class PauseMenu : MonoBehaviour, IUIWindow
             }
 
         }
+    }
+
+
+    private void UnpauseGameOnClick()
+    {
+
+        IsPaused = false;
+
+        _pauseMenuUIObject.SetActive(false);
+
+        _uIBlur.Intensity = 0;
+
+        Time.timeScale = 1;
+
     }
 }
