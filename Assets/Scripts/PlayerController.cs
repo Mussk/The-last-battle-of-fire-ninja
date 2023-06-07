@@ -5,7 +5,7 @@ using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using TMPro;
 using Unity.VisualScripting;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Character, IShootable, IHasHealth
 {
@@ -88,7 +88,9 @@ public class PlayerController : Character, IShootable, IHasHealth
             
             GatherInput();
             Look();
-            Shoot();
+            //better to separate Shoot() in other script
+            if(SceneManager.GetActiveScene().buildIndex == 0)
+                Shoot();
             
         }
         
