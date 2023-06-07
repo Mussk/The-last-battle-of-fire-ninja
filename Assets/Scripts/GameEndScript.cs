@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameEndScript : MonoBehaviour, IUIWindow
 {
@@ -17,9 +19,14 @@ public class GameEndScript : MonoBehaviour, IUIWindow
 
     public UIBlur UIBlur => _uIBlur;
 
+    [SerializeField]
+    private Button newGameButton;
+
     void Start()
     {
         _gameEndUIObject.SetActive(false);
+
+        newGameButton.onClick.AddListener(ReloadSceneOnClick);
     }
 
     void Update()
@@ -37,5 +44,20 @@ public class GameEndScript : MonoBehaviour, IUIWindow
     {
 
         _gameEndUIObject.SetActive(true);
+    }
+
+
+    private void LoadNewSceneOnClick(int sceneBuildIndex)
+    {
+
+        SceneManager.LoadScene(sceneBuildIndex);
+
+    }
+
+    private void ReloadSceneOnClick()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }
