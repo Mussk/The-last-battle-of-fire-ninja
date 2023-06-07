@@ -694,9 +694,10 @@ GameObject:
   - component: {fileID: 135306504}
   - component: {fileID: 135306503}
   - component: {fileID: 135306502}
-  - component: {fileID: 135306506}
   - component: {fileID: 135306507}
   - component: {fileID: 135306508}
+  - component: {fileID: 135306510}
+  - component: {fileID: 135306509}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -788,20 +789,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &135306506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135306501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edc9dbfca6f960441b3fba1d8bb111af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenuButton: {fileID: 1515188266}
-  newGameButton: {fileID: 562529165}
 --- !u!114 &135306507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,6 +824,37 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+--- !u!114 &135306509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135306501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa7fbfbb0654bd449bd506745036e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEndUIObject: {fileID: 164422765}
+  _uIBlur: {fileID: 1934118063}
+  newGameButton: {fileID: 562529165}
+--- !u!114 &135306510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135306501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923f2a40d71ab6341a789fd6a8499724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pauseMenuUIObject: {fileID: 1113140346}
+  _uIBlur: {fileID: 2041760607}
+  mainMenuButton: {fileID: 0}
+  resumeButton: {fileID: 309032720}
 --- !u!1 &142309846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,67 +4368,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &1710233606
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1710233607}
-  - component: {fileID: 1710233608}
-  - component: {fileID: 1710233609}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1710233607
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710233606}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 966.50806, y: 550.9019, z: -53.599213}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1710233608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710233606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa7fbfbb0654bd449bd506745036e84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEndUIObject: {fileID: 164422765}
-  _uIBlur: {fileID: 1934118063}
---- !u!114 &1710233609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710233606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923f2a40d71ab6341a789fd6a8499724, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pauseMenuUIObject: {fileID: 1113140346}
-  _uIBlur: {fileID: 2041760607}
 --- !u!224 &1732385116 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224420688952146012, guid: c50c512aa19fa40719a893c3e8d42022, type: 3}
@@ -12471,7 +12428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3466108979336414284}
   character: {fileID: 7904357999704933519}
-  gameEnd: {fileID: 1710233608}
+  gameEnd: {fileID: 135306509}
   playerController: {fileID: 7904357999704933519}
 --- !u!1 &7978565291504995894
 GameObject:
