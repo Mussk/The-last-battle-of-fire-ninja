@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Healthbar : MonoBehaviour
+public class Healthbar : WorldSpaceUI
 {
-    [SerializeField]
+    
     private Image _healthBarFiller;
 
     [SerializeField]
@@ -13,18 +13,17 @@ public class Healthbar : MonoBehaviour
 
     private float _target = 1;
 
-    //not Camera type because main camera is nested in other GameObject (because isometric)
-    private Camera _camera;
-
-    private void Start()
+    protected override void Awake()
     {
-        _camera = Camera.main;
-        
+        _healthBarFiller = uiObject.GetComponent<Image>();
+
+        base.Awake();
     }
 
-    private void LateUpdate()
+    protected override void LateUpdate()
     {
-        transform.rotation = _camera.transform.rotation;
+        base.LateUpdate();
+
         _healthBarFiller.fillAmount = Mathf.MoveTowards(_healthBarFiller.fillAmount,
             _target, _reduceSpeed * Time.deltaTime);
     }
