@@ -74,7 +74,7 @@ namespace Krivodeling.UI.Effects
             StartCoroutine(EndBlurCoroutine(speed));
         }
 
-        private void Start()
+        private void Awake()
         {
             SetComponents();
             SetBlur(Color, Intensity, _multiplier);
@@ -83,10 +83,10 @@ namespace Krivodeling.UI.Effects
         private void SetComponents()
         {
             _material = FindMaterial();
+            _intensityId = Shader.PropertyToID("_Intensity");
             _colorId = Shader.PropertyToID("_Color");
             _flipXId = Shader.PropertyToID("_FlipX");
             _flipYId = Shader.PropertyToID("_FlipY");
-            _intensityId = Shader.PropertyToID("_Intensity");
             _multiplierId = Shader.PropertyToID("_Multiplier");
         }
 
