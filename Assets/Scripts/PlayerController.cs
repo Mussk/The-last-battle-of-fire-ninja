@@ -71,7 +71,7 @@ public class PlayerController : Character, IShootable, IHasHealth
 
    
 
-    void Start() 
+    void Awake() 
     {
         layermask |= (1 << 3);
 
