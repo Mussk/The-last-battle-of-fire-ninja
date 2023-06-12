@@ -22,11 +22,20 @@ public class GameEndScript : MonoBehaviour, IUIWindow
     [SerializeField]
     private Button newGameButton;
 
+    [SerializeField]
+    private Button mainMenuButton;
+
+    private SceneManipulationButtons sceneManipulationButtons;
+
     void Start()
     {
         _gameEndUIObject.SetActive(false);
 
-        newGameButton.onClick.AddListener(ReloadSceneOnClick);
+        sceneManipulationButtons = new SceneManipulationButtons();
+
+        newGameButton.onClick.AddListener(sceneManipulationButtons.ReloadCurrenSceneOnClick);
+
+        mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
     }
 
     void Update()
@@ -47,17 +56,5 @@ public class GameEndScript : MonoBehaviour, IUIWindow
     }
 
 
-    private void LoadNewSceneOnClick(int sceneBuildIndex)
-    {
-
-        SceneManager.LoadScene(sceneBuildIndex);
-
-    }
-
-    private void ReloadSceneOnClick()
-    {
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-    }
+    
 }
