@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour, IUIWindow
   
     public UIBlur UIBlur => _uIBlur;
 
+    private SceneManipulationButtons sceneManipulationButtons;
 
     [Header("Buttons")]
     [SerializeField]
@@ -27,14 +28,21 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     private Button resumeButton;
 
 
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
         _pauseMenuUIObject.SetActive(true);
+        _uIBlur.Intensity = 0;
         _pauseMenuUIObject.SetActive(false);
+        
         IsPaused = false;
+        Time.timeScale = 1;
+
+        sceneManipulationButtons = new SceneManipulationButtons();
 
         resumeButton.onClick.AddListener(UnpauseGameOnClick);
+        mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
+        
 
         
     }
@@ -53,7 +61,7 @@ public class PauseMenu : MonoBehaviour, IUIWindow
                 IsPaused = true;
                 
                 _pauseMenuUIObject.SetActive(true);
-
+               
                 _uIBlur.Intensity = 1;
                 
             } 
