@@ -69,7 +69,9 @@ public class PlayerController : Character, IShootable, IHasHealth
     [SerializeField]
     public AnimationHandler animationHandler;
 
-   
+    [field: SerializeField]
+    public int CoinsCount { get; set; }
+
 
     void Awake() 
     {
