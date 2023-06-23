@@ -53,6 +53,11 @@ public class GameEndScript : MonoBehaviour, IUIWindow
     {
 
         _gameEndUIObject.SetActive(true);
+
+        CoinsManager.Instance.CoinsAmountOverall = 
+            CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountOverall,
+            CoinsManager.Instance.CoinsAmountThisGame);
+
     }
 
 
