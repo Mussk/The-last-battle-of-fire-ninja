@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Krivodeling.UI.Effects;
 
-public class ShopController : MonoBehaviour
+public class ShopController : MonoBehaviour, IUIWindow
 {
 
+    [field: SerializeField]
+    public GameObject UIWindowObject { get; set; }
+
+    [field: SerializeField]
+    public UIBlur UIBlur { get; set; }
     [SerializeField]
     private PlayerController playerController;
 
