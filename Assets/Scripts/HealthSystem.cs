@@ -84,9 +84,19 @@ public class HealthSystem
 
         _healthbar.UpdateHealthBar(_currentMaxHealth, _currentHealth);
 
-        if (_currentHealth == 0)
+        if (_animationHanlder.gameObject.CompareTag("Player") 
+            && _currentHealth > 0) 
         {
 
+            CoinsManager.Instance.CoinsAmountThisGame = CoinsManager.Instance.
+            ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountThisGame,
+            -CoinsManager.Instance.CoinsRemovedOnDamageTaken);
+        
+        }
+
+        if (_currentHealth == 0)
+        {
+           
             _animationHanlder.PlayDeathAnimation();
 
         }
