@@ -29,6 +29,11 @@ public class AnimationHandler : MonoBehaviour
     {
         if (character is Enemy) 
         {
+
+            CoinsManager.Instance.CoinsAmountThisGame = 
+                CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountThisGame, 
+                character.gameObject.GetComponent<Enemy>().CoinsReward);
+            
             SpawnManager.spawnedEnemies.Remove(character.gameObject);
             Destroy(character.gameObject);
            
