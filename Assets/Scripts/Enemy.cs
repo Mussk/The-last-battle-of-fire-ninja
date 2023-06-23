@@ -38,6 +38,9 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
     [SerializeField]
     private AnimationHandler animationHandler;
 
+    [field: SerializeField]
+    public int CoinsReward { get; private set; }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
