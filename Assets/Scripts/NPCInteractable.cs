@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UI;
 
 public class NPCInteractable : MonoBehaviour, IInteractable
@@ -8,6 +9,9 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     [SerializeField]
     private string interactText;
+
+    
+    public ShopController ShopUI;
 
     
     // Start is called before the first frame update
@@ -24,8 +28,16 @@ public class NPCInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Transform interactorTransform)
     {
-        //openShopUI
-        Debug.Log("Hello!");
+        if (!ShopUI.UIWindowObject.activeSelf) 
+        { 
+            ShopUI.UIWindowObject.SetActive(true);
+
+            ShopUI.UIBlur.Intensity = 1;
+        }
+        else
+        {
+            Debug.Log("Window is already shown");
+        }    
     }
 
     public string GetInteractText()
