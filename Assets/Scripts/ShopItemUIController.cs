@@ -5,8 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 public class ShopItemUIController : MonoBehaviour
 {
-    [SerializeField]
-    private Button buyItemButton;
+    [field: SerializeField]
+    public Button BuyItemButton { get; private set; }
 
     [SerializeField]
     private PlayerSkinScriptableObject playerSkinScriptableObject;
@@ -15,42 +15,42 @@ public class ShopItemUIController : MonoBehaviour
     private List<GameObject> playerModelPartsToColor;
 
     [SerializeField]
-    private PlayerController playerController;
-
-    [SerializeField]
     private ShopController shopController;
 
     // Start is called before the first frame update
     void Awake()
     {
-        buyItemButton.onClick.AddListener(BuyItemButtonOnClick);
-        buyItemButton.GetComponentInChildren<TextMeshProUGUI>().text = 
-            playerSkinScriptableObject.Price.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+       
+        BuyItemButton.onClick.AddListener(BuyItemButtonOnClick);
 
     }
 
-
+ 
     private void BuyItemButtonOnClick() 
     {   
-        if (playerController.CoinsCount >= playerSkinScriptableObject.Price)
+        if (shopController.CoinsAmountOverall >= playerSkinScriptableObject.Price)
         {
 
-            playerController.CoinsCount -= playerSkinScriptableObject.Price;
+            shopController.CoinsAmountOverall -= playerSkinScriptableObject.Price;
+
+            shopController.coinsText.text = shopController.CoinsAmountOverall.ToString();
 
             foreach (var modelPart in playerModelPartsToColor)
                 modelPart.GetComponent<Renderer>().material
                     = playerSkinScriptableObject.Material;
-
-            Debug.Log(playerController.CoinsCount);
 
             shopController.CheckPrices();
         }
        
 
     }
+
+
+   public void InitializePrice()
+   {
+        BuyItemButton.GetComponentInChildren<TextMeshProUGUI>().text =
+           playerSkinScriptableObject.Price.ToString();
+   }
+
+
 }
