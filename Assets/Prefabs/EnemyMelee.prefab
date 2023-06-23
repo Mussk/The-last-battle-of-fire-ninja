@@ -888,6 +888,7 @@ MonoBehaviour:
   _healthbar: {fileID: 300038063410583488}
   animator: {fileID: 2498328564368708852}
   animationHandler: {fileID: 2666268049978722629}
+  <CoinsReward>k__BackingField: 5
 --- !u!95 &2498328564368708852
 Animator:
   serializedVersion: 4

@@ -11,6 +11,8 @@ TagManager:
   - Siphon
   - Firestorm
   - EnemyWeapon
+  - CoinsManager
+  - CoinsText
   layers:
   - Default
   - TransparentFX
