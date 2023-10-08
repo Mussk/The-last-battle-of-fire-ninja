@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebafbe56a8c1222469d3eead686f353d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinsAmountOverall: 0
+  coinsAmountDebug: 3000
   <CoinsText>k__BackingField: {fileID: 230672369}
   <CoinsRemovedOnDamageTaken>k__BackingField: 2
 --- !u!4 &188229535
@@ -12778,6 +12778,7 @@ GameObject:
   - component: {fileID: 7904357999704933518}
   - component: {fileID: 7904357999704933517}
   - component: {fileID: 7904357999704933521}
+  - component: {fileID: 7904357999704933522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -12848,7 +12849,6 @@ MonoBehaviour:
   projectilesSpawner: {fileID: 722890298}
   playerAnimationHandler: {fileID: 7904357999704933521}
   animationHandler: {fileID: 7904357999704933521}
-  <CoinsCount>k__BackingField: 0
 --- !u!114 &7904357999704933520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12877,6 +12877,29 @@ MonoBehaviour:
   character: {fileID: 7904357999704933519}
   gameEnd: {fileID: 135306509}
   playerController: {fileID: 7904357999704933519}
+--- !u!114 &7904357999704933522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7904357999704933516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d59fe26a3e00a4428acf7c91601bb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSkinScriptableObject: {fileID: 11400000, guid: 59bdd7c6cf7417244bae1a816802d661, type: 2}
+  <PlayerModelPartsToColor>k__BackingField:
+  - {fileID: 4754555515846576092}
+  - {fileID: 5361887501989038072}
+  - {fileID: 4434799228716515156}
+  - {fileID: 727348231857330133}
+  - {fileID: 8974462419299338696}
+  - {fileID: 1342352105515547023}
+  - {fileID: 1348809773777461471}
+  defaultSkinMaterial: {fileID: 2100000, guid: ead3aa92e3f47d54fba56e2788c58e15, type: 2}
+  fileName: CurrentSkin.json
 --- !u!1 &7978565291504995894
 GameObject:
   m_ObjectHideFlags: 0
