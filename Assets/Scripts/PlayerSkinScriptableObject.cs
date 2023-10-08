@@ -9,9 +9,18 @@ public class PlayerSkinScriptableObject : ScriptableObject
     public GameObject PlayerSkinModel { get; private set; }
 
     [field: SerializeField]
-    public Material Material { get; private set; }
+    public Material Material { get; set; }
 
     [field: SerializeField]
-    public int Price { get; private set; }
+    public int DefaultPrice { get; private set; }
+
+    [field: SerializeField]
+    public int CurrentPrice { get; set; }
+
+    public void MarkAsBought()
+    {
+        CurrentPrice = 0;
+        Debug.Log("Marked as bought");
+    }
     
 }
