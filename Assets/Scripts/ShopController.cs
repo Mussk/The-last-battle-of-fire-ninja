@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Krivodeling.UI.Effects;
+using System.Linq;
 
-public class ShopController : MonoBehaviour, IUIWindow
+public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
 {
 
     [field: SerializeField]
@@ -22,16 +23,29 @@ public class ShopController : MonoBehaviour, IUIWindow
     [SerializeField]
     private List<ShopItemUIController> shopItems;
 
+    public bool IsDefaultPrices { get; set; } = false;
+
     // Start is called before the first frame update
     void Awake()
     {
         foreach (var item in shopItems)
         {
-            item.InitializePrice();
-        }
-    }
+            if (IsDefaultPrices)
+            {
 
-    private void OnEnable()
+                item.UpdatePrice(item.playerSkinScriptableObject.DefaultPrice);
+                item.playerSkinScriptableObject.CurrentPrice = item.playerSkinScriptableObject.DefaultPrice;
+            }
+            else
+            {
+
+                item.UpdatePrice(item.playerSkinScriptableObject.CurrentPrice);
+
+            }
+        }
+       
+    }
+        private void OnEnable()
     {
         CoinsAmountOverall = PlayerPrefs.GetInt("CoinsAmountOverall");
 
@@ -70,5 +84,44 @@ public class ShopController : MonoBehaviour, IUIWindow
         
         }
 
+    }
+
+    public void LoadData(SerializedData data)
+    {
+        var serializedSkins = data.SkinData;
+        if(serializedSkins.Count > 0) { 
+            
+            foreach (var shopItem in shopItems) 
+            {
+                var skinItemInShop = shopItem.playerSkinScriptableObject;
+
+                if (serializedSkins.Contains(skinItemInShop.Material.name))
+                {
+                    foreach (var serializedSkin in serializedSkins)
+                    {
+                        if (serializedSkin.Equals(skinItemInShop.Material.name))
+                        {
+                            skinItemInShop.MarkAsBought();
+                        }
+                
+                    }
+
+                }
+
+            }
+        }
+    }
+    public void SaveData(ref SerializedData dataToSave)
+    {
+        foreach(var skinItemInShop in shopItems) 
+        {   
+            var skinItemShopProperties = skinItemInShop.playerSkinScriptableObject;
+
+            if(skinItemShopProperties.CurrentPrice == 0)
+            {
+                dataToSave.SkinData.Add(skinItemShopProperties.Material.name);
+            }
+        
+        }
     }
 }
