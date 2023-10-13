@@ -42,19 +42,6 @@ public class PlayerController : Character, IShootable, IHasHealth
     private SkillCooldownUI skillCooldownUI;
 
     [SerializeField]
-    private int _currentHealth;
-
-    [SerializeField]
-    private int _currentMaxHealth;
-
-    public int CurrentHealth => _currentHealth;
-
-    public int CurrentMaxHealth => _currentMaxHealth;
-
-    [SerializeField]
-    public HealthSystem healthSystem;
-
-    [SerializeField]
     private Healthbar healthbar;
 
     [SerializeField]
@@ -78,14 +65,14 @@ public class PlayerController : Character, IShootable, IHasHealth
 
         layermask = ~layermask;
 
-        healthSystem = new HealthSystem(_currentHealth, _currentMaxHealth, animationHandler, healthbar);
+        HealthSystem = new HealthSystem(_currentHealth, _currentMaxHealth, animationHandler, healthbar);
 
     }
 
     // Start is called before the first frame update
     void Update()
     {
-        if (healthSystem.currentHealth > 0 && !PauseMenu.IsPaused) {
+        if (HealthSystem.currentHealth > 0 && !PauseMenu.IsPaused) {
             
             GatherInput();
             Look();
@@ -254,7 +241,7 @@ private void GatherInput()
         if (other.gameObject.CompareTag("Enemy"))
         {
 
-            healthSystem.ChangeHealth(-other.gameObject.GetComponent<Enemy>().DamageAmount);
+            HealthSystem.ChangeHealth(-other.gameObject.GetComponent<Enemy>().DamageAmount);
         
         }
     }
@@ -266,7 +253,7 @@ private void GatherInput()
         if (other.gameObject.CompareTag("EnemyProjectile"))
         {
 
-            healthSystem.ChangeHealth(-other.gameObject.GetComponent<Projectile>().DamageAmount);
+            HealthSystem.ChangeHealth(-other.gameObject.GetComponent<Projectile>().DamageAmount);
 
             SFXManager.PlaySound("PlayerHitSound");
         }
@@ -274,8 +261,8 @@ private void GatherInput()
         if (other.gameObject.CompareTag("EnemyWeapon"))
         {
 
-            healthSystem.ChangeHealth(-other.gameObject.GetComponentInParent<Enemy>().DamageAmount);
-        
+            HealthSystem.ChangeHealth(-other.gameObject.GetComponentInParent<Enemy>().DamageAmount);
+
             SFXManager.PlaySound("PlayerHitSound");
         }
     }
