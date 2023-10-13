@@ -5,17 +5,29 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour, IDealDamage
 {
     public float speed = 10;
-    
+
     public GameObject actor;
     public Vector3 direction;
     protected bool isShooted = false;
 
     protected int _damageAmount;
+
     public int DamageAmount => _damageAmount;
+
+    
+
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    void Awake() 
+    {
+     
 
     }
 

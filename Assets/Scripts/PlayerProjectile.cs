@@ -11,10 +11,11 @@ public class PlayerProjectile : Projectile, IHasCooldown
     private int id = 1;
     [SerializeField]
     private float cooldownDuration = 2.0f;
-   
+
     public int Id => id;
 
     public float CooldownDuration => cooldownDuration;
+
   
 
     // Start is called before the first frame update
@@ -23,7 +24,11 @@ public class PlayerProjectile : Projectile, IHasCooldown
         actor = GameObject.Find("Player");
 
         _damageAmount = 50;
+
+       
     }
+
+    
 
     // Update is called once per frame
     protected override void Update()
