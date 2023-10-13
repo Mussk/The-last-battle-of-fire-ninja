@@ -1,6 +1,7 @@
 using Krivodeling.UI.Effects;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,11 +28,17 @@ public class GameEndScript : MonoBehaviour, IUIWindow
 
     private SceneManipulationButtons sceneManipulationButtons;
 
+    [SerializeField]
+    private SoundPlayer sceneManipulationButtonsSound, gameEndMusic;
+
+    [SerializeField]
+    private GameObject backgroundSoundLayer;
+
     void Start()
     {
         _gameEndUIObject.SetActive(false);
 
-        sceneManipulationButtons = new SceneManipulationButtons();
+        sceneManipulationButtons = new SceneManipulationButtons(sceneManipulationButtonsSound);
 
         newGameButton.onClick.AddListener(sceneManipulationButtons.ReloadCurrenSceneOnClick);
 
@@ -53,6 +60,8 @@ public class GameEndScript : MonoBehaviour, IUIWindow
     {
 
         _gameEndUIObject.SetActive(true);
+        gameEndMusic.PlaySound();    
+        StopBackgroundLayerSounds();
 
         CoinsManager.Instance.CoinsAmountOverall = 
             CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountOverall,
@@ -60,6 +69,11 @@ public class GameEndScript : MonoBehaviour, IUIWindow
 
     }
 
+    private void StopBackgroundLayerSounds()
+    {
 
-    
+        backgroundSoundLayer.GetComponents<AudioSource>().ToList().ForEach(audioSource => audioSource.Pause());
+
+    }
+
 }
