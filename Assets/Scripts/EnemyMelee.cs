@@ -35,6 +35,13 @@ public class EnemyMelee : Enemy
             animator.SetBool("IsAttacking", true);
             isMoving = false;
 
+            float playerCurrentHealth = other.GetComponent<PlayerController>().HealthSystem.currentHealth;
+
+            if (playerCurrentHealth > 0) {
+                
+                SFXManager.PlaySound("MeleeEnemyAttackVoiceSound");
+                SFXManager.PlaySound("MeleeEnemyAttackWeaponSound", Random.Range(0.1f,0.2f));
+            }
         }
     }
 
