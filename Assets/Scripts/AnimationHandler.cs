@@ -21,6 +21,18 @@ public class AnimationHandler : MonoBehaviour
         animator.SetBool("IsDead", true);
         animator.Play("Death");
 
+         if(character is EnemyMelee)
+         {
+
+            character.SFXManager.PlaySound("MeleeEnemyDeathSound");
+
+         }
+         if(character is EnemyDagger)
+         {
+
+            //TODO
+
+         }   
 
     }
 
@@ -33,14 +45,16 @@ public class AnimationHandler : MonoBehaviour
             CoinsManager.Instance.CoinsAmountThisGame = 
                 CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountThisGame, 
                 character.gameObject.GetComponent<Enemy>().CoinsReward);
-            
+
+           
+
             SpawnManager.spawnedEnemies.Remove(character.gameObject);
             Destroy(character.gameObject);
            
         }
         else
         {
-
+            character.SFXManager.PlaySound("PlayerDeathSound");
             gameEnd.InitializeGameEnd();
 
         }
