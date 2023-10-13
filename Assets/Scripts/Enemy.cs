@@ -81,6 +81,19 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
             otherGameObject.CompareTag("Firestorm"))
         {
             PlayRecieveDamageAnimation();
+
+            if (this is EnemyMelee)
+            {
+
+                SFXManager.PlaySound("MeleeEnemyHitSound");
+
+            }
+            if (this is EnemyDagger)
+            {
+
+                //TODO
+
+            }
         }
 
 
@@ -100,6 +113,9 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
             healthSystem.ChangeHealth(-other.gameObject.GetComponent<Firestorm>().DamageAmount);
 
         }
+
+
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -107,7 +123,6 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
         if (other.gameObject.CompareTag("Siphon"))
         {
 
-            //StartCoroutine(StartRecieveDoTDamage(1, other.gameObject.GetComponent<FireSiphon>().DamageAmount));
             StartRecieveDoTDamage(1, other.gameObject.GetComponent<FireSiphon>().DamageAmount);
         }
     }
@@ -150,6 +165,8 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
     {
         if (!animator.GetBool("IsDead")) { 
             isMoving = true;
+            
+           
         }
     }
 
