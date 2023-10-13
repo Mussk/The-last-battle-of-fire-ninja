@@ -21,6 +21,9 @@ public class PauseMenu : MonoBehaviour, IUIWindow
 
     private SceneManipulationButtons sceneManipulationButtons;
 
+    [SerializeField]
+    private SoundPlayer soundPlayer;
+
     [Header("Buttons")]
     [SerializeField]
     private Button mainMenuButton;
@@ -37,8 +40,8 @@ public class PauseMenu : MonoBehaviour, IUIWindow
         
         IsPaused = false;
         Time.timeScale = 1;
-
-        sceneManipulationButtons = new SceneManipulationButtons();
+        
+        sceneManipulationButtons = new SceneManipulationButtons(soundPlayer);
 
         resumeButton.onClick.AddListener(UnpauseGameOnClick);
         mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
@@ -59,16 +62,15 @@ public class PauseMenu : MonoBehaviour, IUIWindow
                 Time.timeScale = 0;
 
                 IsPaused = true;
-                
                 _pauseMenuUIObject.SetActive(true);
-               
+                soundPlayer.PlaySound();
                 _uIBlur.Intensity = 1;
                 
             } 
             else
             {
                 IsPaused = false;
-
+                soundPlayer.PlaySound();
                 _pauseMenuUIObject.SetActive(false);
 
                 _uIBlur.Intensity = 0;
@@ -85,9 +87,9 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     {
 
         IsPaused = false;
-
+        soundPlayer.PlaySound();
         _pauseMenuUIObject.SetActive(false);
-
+        
         _uIBlur.Intensity = 0;
 
         Time.timeScale = 1;

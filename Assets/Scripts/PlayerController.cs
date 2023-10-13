@@ -70,6 +70,8 @@ public class PlayerController : Character, IShootable, IHasHealth
     public AnimationHandler animationHandler;
 
     
+
+
     void Awake() 
     {
         layermask |= (1 << 3);
@@ -187,6 +189,8 @@ private void GatherInput()
 
                 playerAnimationHandler.PlayDaggerThrowAnimation();
 
+                SFXManager.PlaySound("PlayerDaggerThrowSound");
+
                 cooldownSystem.PutOnCooldown(dagger);
          
             }
@@ -197,7 +201,10 @@ private void GatherInput()
 
                 playerAnimationHandler.PlayFireballAnimation();
 
+                SFXManager.PlaySound("PlayerFireballSound");
+
                 cooldownSystem.PutOnCooldown(fireball);
+                    
                 skillCooldownUI.StartUICooldown(fireball.Id);
 
             }
@@ -212,6 +219,8 @@ private void GatherInput()
                 if (!fireSiphon.isSiphoning) 
                 { 
                     playerAnimationHandler.PlaySiphonCastAnimation();
+
+                    SFXManager.PlaySound("PlayerSiphonSound");
 
                     StartCoroutine(fireSiphon.StartSiphon(5.0f));
 
@@ -228,7 +237,9 @@ private void GatherInput()
                 if (cooldownSystem.IsOnCooldown(firestorm.Id)) { return; }
 
                 playerAnimationHandler.PlayFirestormAnimation();
-                  
+
+                SFXManager.PlaySound("PlayerFireRingSound");
+
                 cooldownSystem.PutOnCooldown(firestorm);
                 skillCooldownUI.StartUICooldown(firestorm.Id);
             }
@@ -249,12 +260,15 @@ private void GatherInput()
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    {   
+
+
         if (other.gameObject.CompareTag("EnemyProjectile"))
         {
 
             healthSystem.ChangeHealth(-other.gameObject.GetComponent<Projectile>().DamageAmount);
 
+            SFXManager.PlaySound("PlayerHitSound");
         }
 
         if (other.gameObject.CompareTag("EnemyWeapon"))
@@ -262,6 +276,7 @@ private void GatherInput()
 
             healthSystem.ChangeHealth(-other.gameObject.GetComponentInParent<Enemy>().DamageAmount);
         
+            SFXManager.PlaySound("PlayerHitSound");
         }
     }
 }

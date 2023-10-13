@@ -81,7 +81,7 @@ public class PlayerAnimationHandler : AnimationHandler
 
         animator.SetBool("IsCastingSiphon", false);
 
-        
+        playerController.SFXManager.StopSound("PlayerSiphonSound");
     
     }
 
