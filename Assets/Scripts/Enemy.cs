@@ -13,17 +13,6 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
     public float moveSpeed = 1;
     public float rotationSpeed = 150;
 
-    protected HealthSystem healthSystem;
-
-    protected int _currentHealth;
-
-    protected int _currentMaxHealth;
-
-    public int CurrentHealth => _currentHealth;
-    public int CurrentMaxHealth => _currentMaxHealth;
-
-    public HealthSystem HealthSystem => healthSystem;
-
     [SerializeField]
     private Healthbar _healthbar;
 
