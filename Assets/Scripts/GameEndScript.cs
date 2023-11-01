@@ -1,9 +1,10 @@
-using Krivodeling.UI.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,11 +15,11 @@ public class GameEndScript : MonoBehaviour, IUIWindow
     private GameObject _gameEndUIObject;
 
     [SerializeField]
-    private UIBlur _uIBlur;
+    private Volume _uIBlur;
 
     public GameObject UIWindowObject => _gameEndUIObject;
 
-    public UIBlur UIBlur => _uIBlur;
+    public Volume UIBlur => _uIBlur;
 
     [SerializeField]
     private Button newGameButton;
@@ -45,21 +46,12 @@ public class GameEndScript : MonoBehaviour, IUIWindow
         mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
     }
 
-    void Update()
-    {
-        if (_gameEndUIObject.activeInHierarchy)
-        {
-
-            _uIBlur.Intensity += 0.7f * Time.deltaTime;
-        
-        }
-
-    }
-
     public void InitializeGameEnd()
     {
+        
 
         _gameEndUIObject.SetActive(true);
+        _uIBlur.enabled = true;
         gameEndMusic.PlaySound();    
         StopBackgroundLayerSounds();
 

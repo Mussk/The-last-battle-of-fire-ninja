@@ -1,7 +1,7 @@
-using Krivodeling.UI.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour, IUIWindow
@@ -13,11 +13,11 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     private GameObject _pauseMenuUIObject;
 
     [SerializeField]
-    private UIBlur _uIBlur;
+    private Volume _uIBlur;
 
     public GameObject UIWindowObject => _pauseMenuUIObject;
   
-    public UIBlur UIBlur => _uIBlur;
+    public Volume UIBlur => _uIBlur;
 
     private SceneManipulationButtons sceneManipulationButtons;
 
@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     void Awake()
     {
         _pauseMenuUIObject.SetActive(true);
-        _uIBlur.Intensity = 0;
+       
         _pauseMenuUIObject.SetActive(false);
         
         IsPaused = false;
@@ -64,7 +64,7 @@ public class PauseMenu : MonoBehaviour, IUIWindow
                 IsPaused = true;
                 _pauseMenuUIObject.SetActive(true);
                 soundPlayer.PlaySound();
-                _uIBlur.Intensity = 1;
+                _uIBlur.enabled = true;
                 
             } 
             else
@@ -73,7 +73,7 @@ public class PauseMenu : MonoBehaviour, IUIWindow
                 soundPlayer.PlaySound();
                 _pauseMenuUIObject.SetActive(false);
 
-                _uIBlur.Intensity = 0;
+                _uIBlur.enabled = false;
 
                 Time.timeScale = 1;
 
@@ -89,8 +89,8 @@ public class PauseMenu : MonoBehaviour, IUIWindow
         IsPaused = false;
         soundPlayer.PlaySound();
         _pauseMenuUIObject.SetActive(false);
-        
-        _uIBlur.Intensity = 0;
+
+        _uIBlur.enabled = false;    
 
         Time.timeScale = 1;
 

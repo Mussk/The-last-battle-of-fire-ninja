@@ -1,10 +1,10 @@
-using Krivodeling.UI.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public interface IUIWindow 
 {
     GameObject UIWindowObject { get; }
-    UIBlur UIBlur { get; }
+    Volume UIBlur { get; }
 }
