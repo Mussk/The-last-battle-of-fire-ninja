@@ -17,6 +17,9 @@ public class ShopItemUIController : MonoBehaviour
     [SerializeField]
     private PlayerSkinHandler playerSkinHandler;
 
+    [SerializeField]
+    private SoundPlayer purchaseSound;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,6 +35,9 @@ public class ShopItemUIController : MonoBehaviour
         {
 
             shopController.CoinsAmountOverall -= playerSkinScriptableObject.CurrentPrice;
+
+            if (!BuyItemButton.GetComponentInChildren<TextMeshProUGUI>().text.Equals("0"))
+                purchaseSound.PlaySound();
 
             playerSkinScriptableObject.MarkAsBought();
 
@@ -52,7 +58,9 @@ public class ShopItemUIController : MonoBehaviour
 
     public void UpdatePrice(int price)
     {
-        BuyItemButton.GetComponentInChildren<TextMeshProUGUI>().text =
+       
+
+       BuyItemButton.GetComponentInChildren<TextMeshProUGUI>().text =
        price.ToString();
 
     }

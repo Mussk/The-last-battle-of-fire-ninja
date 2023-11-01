@@ -12,6 +12,11 @@ public class InteractUI : WorldSpaceUI
     [SerializeField]
     private TextMeshProUGUI interactText;
 
+    [SerializeField]
+    private SoundPlayer traderInteractSound;
+
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -28,6 +33,8 @@ public class InteractUI : WorldSpaceUI
        if(playerInteract.GetInteractableObject() != null)
        {
             Show(playerInteract.GetInteractableObject());
+
+            
        }
        else
        {
@@ -38,11 +45,13 @@ public class InteractUI : WorldSpaceUI
     private void Show(IInteractable interactable)
     {
         uiObject.SetActive(true);
+        traderInteractSound.PlaySoundOneShot();
         interactText.text = interactable.GetInteractText();
     }
 
     private void Hide()
     {
         uiObject.SetActive(false);
+        traderInteractSound.IsSoundPlayed = false;
     }
 }

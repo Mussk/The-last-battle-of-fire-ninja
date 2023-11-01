@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Krivodeling.UI.Effects;
-using System.Linq;
 using UnityEngine.Rendering;
 
 public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
@@ -26,6 +23,9 @@ public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
 
     public bool IsDefaultPrices { get; set; } = false;
 
+    [SerializeField]
+    private SoundPlayer soundPlayer;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,13 +46,15 @@ public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
         }
        
     }
-        private void OnEnable()
+    private void OnEnable()
     {
         CoinsAmountOverall = PlayerPrefs.GetInt("CoinsAmountOverall");
 
         coinsText.text = CoinsAmountOverall.ToString();
 
         CheckPrices();
+
+        soundPlayer.PlaySound();
     }
 
     private void OnDisable()
@@ -60,6 +62,8 @@ public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
         PlayerPrefs.SetInt("CoinsAmountOverall", CoinsAmountOverall);
 
         Debug.Log(PlayerPrefs.GetInt("CoinsAmountOverall"));
+
+        soundPlayer.PlaySound();
     }
 
     // Update is called once per frame
