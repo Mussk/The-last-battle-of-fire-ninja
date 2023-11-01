@@ -27,7 +27,7 @@ public class ShopCloseButton : MonoBehaviour
     private void ShopCloseButtonOnClick()
     {
 
-        shopWindow.UIBlur.Intensity = 0;
+        shopWindow.UIBlur.enabled = false;
 
         shopWindow.gameObject.SetActive(false);
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Krivodeling.UI.Effects;
 using System.Linq;
+using UnityEngine.Rendering;
 
 public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
 {
@@ -13,7 +14,7 @@ public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
     public GameObject UIWindowObject { get; set; }
 
     [field: SerializeField]
-    public UIBlur UIBlur { get; set; }
+    public Volume UIBlur { get; set; }
 
     public int CoinsAmountOverall { get; set; }
 
