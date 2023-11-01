@@ -82,18 +82,7 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
         {
             PlayRecieveDamageAnimation();
 
-            if (this is EnemyMelee)
-            {
-
-                SFXManager.PlaySound("MeleeEnemyHitSound");
-
-            }
-            if (this is EnemyDagger)
-            {
-
-                //TODO
-
-            }
+            PlayGotHitSound();
         }
 
 
@@ -178,5 +167,21 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
         animator.Play("GetHit");
         animator.SetBool("IsGettingHit", false);
 
+    }
+
+    private void PlayGotHitSound()
+    {
+        if (this is EnemyMelee)
+        {
+
+            SFXManager.PlaySound("MeleeEnemyHitSound");
+
+        }
+        if (this is EnemyDagger)
+        {
+
+            SFXManager.PlaySound("BowEnemyGotHitSound");
+
+        }
     }
 }

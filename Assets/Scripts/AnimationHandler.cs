@@ -21,18 +21,7 @@ public class AnimationHandler : MonoBehaviour
         animator.SetBool("IsDead", true);
         animator.Play("Death");
 
-         if(character is EnemyMelee)
-         {
-
-            character.SFXManager.PlaySound("MeleeEnemyDeathSound");
-
-         }
-         if(character is EnemyDagger)
-         {
-
-            //TODO
-
-         }   
+        PlayDeathSound();
 
     }
 
@@ -56,6 +45,22 @@ public class AnimationHandler : MonoBehaviour
         {
             character.SFXManager.PlaySound("PlayerDeathSound");
             gameEnd.InitializeGameEnd();
+
+        }
+    }
+
+    private void PlayDeathSound() 
+    {
+        if (character is EnemyMelee)
+        {
+
+            character.SFXManager.PlaySound("MeleeEnemyDeathSound");
+
+        }
+        if (character is EnemyDagger)
+        {
+
+            character.SFXManager.PlaySound("BowEnemyDeathSound");
 
         }
     }
