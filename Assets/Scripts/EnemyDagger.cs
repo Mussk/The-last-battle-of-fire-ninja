@@ -48,6 +48,9 @@ public class EnemyDagger : Enemy, IShootable
         enemyProjectile.direction = transform.forward;
 
         Instantiate(projectileEnemyDagger, projectilesSpawner.position, transform.rotation);
+
+        SFXManager.PlaySound("BowEnemyArrowShotSound");
+
     }
 
     //this method is invoked by animation BowShot
@@ -73,7 +76,9 @@ public class EnemyDagger : Enemy, IShootable
 
             animator.SetBool("IsShootingBow", true);
             animator.Play("BowShot");
-
+            SFXManager.PlaySound("BowEnemyVoiceAttackSound", Random.Range(0.1f, 0.3f));
+            SFXManager.PlaySound("BowEnemyStringPullSound");
+            
         }
 
     }
