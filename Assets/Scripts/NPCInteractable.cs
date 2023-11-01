@@ -32,7 +32,7 @@ public class NPCInteractable : MonoBehaviour, IInteractable
         { 
             ShopUI.UIWindowObject.SetActive(true);
 
-            ShopUI.UIBlur.Intensity = 1;
+            ShopUI.UIBlur.enabled = true;
         }
         else
         {
