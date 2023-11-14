@@ -21,6 +21,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField]
     private SoundPlayer soundPlayer;
 
+    [SerializeField]
+    private SettingsController settingsUIWindow;
+
     private SceneManipulationButtons sceneManipulationButtons;
 
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class MainMenuUI : MonoBehaviour
 
         playButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(0); });
         shopButton.onClick.AddListener (delegate { sceneManipulationButtons.LoadNewSceneOnClick(1); });
+        settingsButton.onClick.AddListener(delegate { OpenSettingsUIWindow(); });
         quitButton.onClick.AddListener(sceneManipulationButtons.QuitApplication);
 
         
@@ -41,6 +45,13 @@ public class MainMenuUI : MonoBehaviour
         
     }
     
+    private void OpenSettingsUIWindow() 
+    { 
     
+        settingsUIWindow.gameObject.SetActive(true);
+
+        settingsUIWindow.UIBlur.enabled = true;
+
+    }
 
 }
