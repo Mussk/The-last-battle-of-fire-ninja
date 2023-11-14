@@ -9408,8 +9408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b461503160b45b44995c8d54f7c0c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopWindow: {fileID: 1953713356}
-  shopCloseButton: {fileID: 683943998}
+  uiWindowComponent: {fileID: 1953713354}
+  closeButton: {fileID: 683943998}
 --- !u!1 &686094846
 GameObject:
   m_ObjectHideFlags: 0
