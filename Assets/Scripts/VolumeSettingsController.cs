@@ -43,7 +43,7 @@ public class VolumeSettingsController : MonoBehaviour
         sfxVolumeSlider.onValueChanged.AddListener(delegate { ChangeVolumeBySlider("SFXVolume", sfxVolumeSlider.value); });
 
     }
-    
+
     // Update is called once per frame
     void Update()
     {
