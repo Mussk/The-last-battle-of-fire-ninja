@@ -4937,7 +4937,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 4977689257323189429, guid: ca2dc033473b7ec4cb6ccc8912a06a19, type: 3}
   - {fileID: 1834024975275355734, guid: 3e6cb3669aee83745932d9d2e5436b76, type: 3}
-  maxSpawnedEnemies: 20
+  maxSpawnedEnemies: 1
 --- !u!4 &1360855742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1823416350814014631, guid: 11c84dc295c17ba45ac88942f96b2093, type: 3}
@@ -5373,7 +5373,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570088294}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 826bb8ea4939f9340ba3d55e1120eb1f, type: 3}
@@ -5476,7 +5476,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
