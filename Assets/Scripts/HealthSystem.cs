@@ -76,6 +76,7 @@ public class HealthSystem
     //check health within [0, maxhealth], update healthbar & death state
     private void DamagePostprocessing() 
     {
+       
         //check if health >= 0
         _currentHealth = Mathf.Max(0, _currentHealth);
 

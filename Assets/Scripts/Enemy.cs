@@ -74,37 +74,39 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        GameObject otherGameObject = other.gameObject;
+        if (this.isMoving) { 
 
-        if (otherGameObject.CompareTag("Projectile") ||
-            otherGameObject.CompareTag("Siphon") ||
-            otherGameObject.CompareTag("Firestorm"))
-        {
-            PlayRecieveDamageAnimation();
+            GameObject otherGameObject = other.gameObject;
 
-            PlayGotHitSound();
-        }
+            if (otherGameObject.CompareTag("Projectile") ||
+                otherGameObject.CompareTag("Siphon") ||
+                otherGameObject.CompareTag("Firestorm"))
+            {
+                PlayRecieveDamageAnimation();
 
+                PlayGotHitSound();
+            }
 
-        if (other.gameObject.CompareTag("Projectile"))
-        {
+       
+            if (other.gameObject.CompareTag("Projectile"))
+            {
 
-            healthSystem.ChangeHealth(-other.gameObject.GetComponent<Projectile>().DamageAmount);
+                healthSystem.ChangeHealth(-other.gameObject.GetComponent<Projectile>().DamageAmount);
    
         
-        }
+            }
 
         
 
-        if (other.gameObject.CompareTag("Firestorm"))
-        {
+            if (other.gameObject.CompareTag("Firestorm"))
+            {
 
-            healthSystem.ChangeHealth(-other.gameObject.GetComponent<Firestorm>().DamageAmount);
+                healthSystem.ChangeHealth(-other.gameObject.GetComponent<Firestorm>().DamageAmount);
+
+            }
 
         }
 
-
-        
     }
 
     private void OnTriggerStay(Collider other)
@@ -171,6 +173,7 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
 
     private void PlayGotHitSound()
     {
+       
         if (this is EnemyMelee)
         {
 
@@ -183,5 +186,6 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
             SFXManager.PlaySound("BowEnemyGotHitSound");
 
         }
+    
     }
 }

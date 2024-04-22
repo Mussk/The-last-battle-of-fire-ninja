@@ -14,6 +14,8 @@ public class AnimationHandler : MonoBehaviour
     [SerializeField]
     private GameEndScript gameEnd;
 
+    private bool isSoundPlayed = false;
+
     public void PlayDeathAnimation()
     {
 
@@ -28,40 +30,51 @@ public class AnimationHandler : MonoBehaviour
     //this method is called by Death animation
     public void DeathAnimationEvent()
     {
-        if (character is Enemy) 
+        if (character is Enemy)
         {
 
-            CoinsManager.Instance.CoinsAmountThisGame = 
-                CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountThisGame, 
+            CoinsManager.Instance.CoinsAmountThisGame =
+                CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountThisGame,
                 character.gameObject.GetComponent<Enemy>().CoinsReward);
 
-           
+
 
             SpawnManager.spawnedEnemies.Remove(character.gameObject);
             Destroy(character.gameObject);
-           
+
         }
         else
         {
-            character.SFXManager.PlaySound("PlayerDeathSound");
+            
             gameEnd.InitializeGameEnd();
 
         }
     }
 
-    private void PlayDeathSound() 
+    private void PlayDeathSound()
     {
-        if (character is EnemyMelee)
-        {
+        if (!isSoundPlayed) {
 
-            character.SFXManager.PlaySound("MeleeEnemyDeathSound");
+            if (character is EnemyMelee)
+            {
 
-        }
-        if (character is EnemyDagger)
-        {
+                character.SFXManager.PlaySound("MeleeEnemyDeathSound");
+                
 
-            character.SFXManager.PlaySound("BowEnemyDeathSound");
+            }
+            else if (character is EnemyDagger)
+            {
 
+                character.SFXManager.PlaySound("BowEnemyDeathSound");
+                
+            }
+            else
+            {
+
+                character.SFXManager.PlaySound("PlayerDeathSound");
+                
+            }
+            isSoundPlayed = true;
         }
     }
 }
