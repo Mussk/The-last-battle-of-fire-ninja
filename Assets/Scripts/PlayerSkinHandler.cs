@@ -12,9 +12,9 @@ public class PlayerSkinHandler : MonoBehaviour
     [field: SerializeField]
     private List<GameObject> PlayerModelPartsToColor { get; set; }
   
-    private SerializedData currentSkinData;
+    private SkinData currentSkinData;
 
-    private FileDataHandler fileDataHandler;
+    private FileDataHandler<SkinData> fileDataHandler;
 
     [SerializeField]
     private Material defaultSkinMaterial;
@@ -28,7 +28,7 @@ public class PlayerSkinHandler : MonoBehaviour
     {
         SceneManager.sceneUnloaded += OnSceneUnloaded;
 
-        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.fileDataHandler = new FileDataHandler<SkinData>(Application.persistentDataPath, fileName);
 
         LoadData();
 
@@ -57,33 +57,33 @@ public class PlayerSkinHandler : MonoBehaviour
     }
 
     //Intializes default skin
-    public void InitDefaultData()
+    public void InitDefaultSkinData()
     {
 
-        currentSkinData = new SerializedData();
-        currentSkinData.SkinData.Add(defaultSkinMaterial.name);
+        currentSkinData = new SkinData();
+        currentSkinData.CurrentSkinMaterialName = defaultSkinMaterial.name;
     }
 
-    public void LoadData()
+    private void LoadData()
     {
         this.currentSkinData = fileDataHandler.Load();
 
         if (this.currentSkinData == null)
         {
             Debug.Log("No data was found. Initializing default data.");
-            InitDefaultData();
+            InitDefaultSkinData();
         }
         
-            currentSkinScriptableObject.Material = GetMaterialByName(currentSkinData.SkinData.First());
+            currentSkinScriptableObject.Material = GetMaterialByName(currentSkinData.CurrentSkinMaterialName);
             
     }
 
     public void SaveData()
     {
 
-        currentSkinData.SkinData.Clear();
+        currentSkinData.OwnedSkinsData.Clear();
 
-        currentSkinData.SkinData.Add(currentSkinScriptableObject.Material.name);
+        currentSkinData.OwnedSkinsData.Add(currentSkinScriptableObject.Material.name);
 
         fileDataHandler.Save(currentSkinData);
     }
