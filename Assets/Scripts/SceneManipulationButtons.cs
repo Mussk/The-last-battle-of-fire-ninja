@@ -18,8 +18,9 @@ public class SceneManipulationButtons
     public void LoadNewSceneOnClick(int sceneBuildIndex)
     {
         soundPlayer.PlaySound();
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneBuildIndex);
-
+        
     }
 
     public void ReloadCurrenSceneOnClick()
