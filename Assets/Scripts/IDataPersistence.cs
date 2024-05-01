@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDataPersistence
+public interface IDataPersistence<T>
 {
+    
+    void LoadData(T data);
 
-    void LoadData(SerializedData data);
+    void SaveData(ref T dataToSave);
 
-    void SaveData(ref SerializedData data);
+    void InitDefaultData();
+
 }

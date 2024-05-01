@@ -4,101 +4,96 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-public class DataPersistenceManager : MonoBehaviour
+public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
 {
     [Header("File Storage Config")]
     [SerializeField]
-    private string ownedSkinsFile;
-
-
-    private SerializedData ownedSkinData;
-
+    protected string configFileName;
     
-    private List<IDataPersistence> dataPersistenceObjects;
+    protected T serializedData;
 
-    private FileDataHandler fileDataHandler;
+    [field: SerializeReference]
+    public List<BaseController<T>> dataPersistenceObjects;
 
-    [SerializeField]
-    private ShopController shopController;
 
-    public static DataPersistenceManager Instance { get; private set; }
+    protected FileDataHandler<T> fileDataHandler;
+    
 
-    private void Awake()
+    protected virtual void Awake() 
+    {
+
+        this.fileDataHandler = new FileDataHandler<T>(Application.persistentDataPath, configFileName);
+
+    }
+   
+    protected virtual void Start()
     {   
-        if(Instance != null)
-        {
-            Debug.LogError("Found more than one DataPersistenceManager on the scene.");
-        }
-
-        Instance = this;
-
+       
         SceneManager.sceneUnloaded += OnSceneUnloaded;
-
-        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, ownedSkinsFile);
-        
-        dataPersistenceObjects = new List<IDataPersistence>();
-        //done this way because ShopController is incactive during Awake method execution
-        dataPersistenceObjects.Add(shopController);
 
         LoadData();
     }
 
-    private void Start()
+
+    protected void LoadData() 
     {
-       
+      
+        this.serializedData = fileDataHandler.Load();
 
-    }
-
-
-    public void InitDefaultData() 
-    { 
-    
-        this.ownedSkinData = new SerializedData();
-        shopController.IsDefaultPrices = true;
-
-    }   
-
-    public void LoadData() 
-    {
-
-        this.ownedSkinData = fileDataHandler.Load();
-
-        if(this.ownedSkinData == null)
+        if (this.serializedData == null)
         {
             Debug.Log("No data was found. Initializing default data.");
-            InitDefaultData();
+                
+            foreach(BaseController<T> dataPersistentObj in dataPersistenceObjects)
+            {
+                //here the magic goes...
+                dataPersistentObj.InitDefaultData();
+
+            }
+
 
             return;
+
         }
 
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        foreach (IDataPersistence<T> dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.LoadData(ownedSkinData);
+
+            dataPersistenceObj.LoadData(serializedData);
+
         }
 
         Debug.Log("Loaded skins");
+  
     }
 
-    public void SaveData()
+    protected void SaveData()
     {
-        foreach(IDataPersistence dataPersistenceObj in dataPersistenceObjects)
-        {
-            dataPersistenceObj.SaveData(ref ownedSkinData);
 
-            Debug.Log("Saved skin:" + dataPersistenceObj.ToString());
+        T serializedData = new();
+
+        foreach (IDataPersistence<T> dataPersistenceObj in dataPersistenceObjects)
+        {
+
+            dataPersistenceObj.SaveData(ref serializedData);
+
+            Debug.Log("Saved data:" + dataPersistenceObj.ToString());
+                
         }
 
-        fileDataHandler.Save(ownedSkinData);
+        
+        fileDataHandler.Save(serializedData);
+
     }
 
 
-    private void OnSceneUnloaded(Scene scene)
+    protected virtual void OnSceneUnloaded(Scene scene)
     {   
         SaveData();
         Debug.Log("Data is saved");
     }
 
-    private void OnApplicationQuit()
+    protected virtual void OnApplicationQuit()
     {
         SaveData();
         Debug.Log("Data is saved");

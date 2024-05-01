@@ -3,25 +3,26 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Collections.Generic;
 
 
-public class FileDataHandler 
+public class FileDataHandler<T>
 {
     private string dataDirPath = "";
 
-    private string dataFileName = "";
+    private string dataFileName;
 
-
+    
     public FileDataHandler(string dataDirPath, string dataFileName)
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
     }
 
-    public SerializedData Load()
+    public T Load()
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-        SerializedData loadedData = null;
+        T loadedData = default;
         if (File.Exists(fullPath))
         {
             try
@@ -37,7 +38,9 @@ public class FileDataHandler
                     }
                 }
                 
-                loadedData = JsonConvert.DeserializeObject<SerializedData>(dataToLoad);
+                loadedData = JsonConvert.DeserializeObject<T>(dataToLoad);
+
+                Debug.Log(loadedData.ToString());
             }
             catch (Exception e)
             {
@@ -49,7 +52,7 @@ public class FileDataHandler
     }
 
 
-    public void Save(SerializedData data) 
+    public void Save(T data) 
     {
 
         string fullPath = Path.Combine(dataDirPath,dataFileName);
@@ -58,7 +61,6 @@ public class FileDataHandler
 
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            data.SkinData = data.SkinData.Distinct().ToList();
 
             string dataToStore = JsonConvert.SerializeObject(data);
 
@@ -79,5 +81,7 @@ public class FileDataHandler
         
         }
     }
+
+
 
 }
