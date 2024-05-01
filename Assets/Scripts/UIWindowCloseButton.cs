@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIWindowCloseButton : MonoBehaviour
@@ -39,10 +40,20 @@ public class UIWindowCloseButton : MonoBehaviour
 
 
     private void UIWindowCloseButtonOnClick()
-    {
+    {   
 
-        uiWindow.UIBlur.enabled = false;
+        if(SceneManager.GetActiveScene().buildIndex == 2) 
+        {
 
+            Time.timeScale = 1;
+
+        }
+
+        if (Time.timeScale == 1) 
+        {   
+
+            uiWindow.UIBlur.enabled = false;
+        }
         uiWindow.UIWindowObject.SetActive(false);
 
     }
