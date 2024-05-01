@@ -4570,7 +4570,7 @@ MonoBehaviour:
   <BuyItemButton>k__BackingField: {fileID: 1829980589}
   <playerSkinScriptableObject>k__BackingField: {fileID: 11400000, guid: 0f782c443ac4231428730cabb9c2bcc7, type: 2}
   shopController: {fileID: 1953713356}
-  playerSkinHandler: {fileID: 7904357999704933523}
+  playerSkinController: {fileID: 7904357999704933523}
   purchaseSound: {fileID: 1423690379}
 --- !u!1 &243150019
 GameObject:
@@ -14201,7 +14201,7 @@ MonoBehaviour:
   <BuyItemButton>k__BackingField: {fileID: 799087591}
   <playerSkinScriptableObject>k__BackingField: {fileID: 11400000, guid: 4a9083b3d8896d34ca265959ae66d0f3, type: 2}
   shopController: {fileID: 1953713356}
-  playerSkinHandler: {fileID: 7904357999704933523}
+  playerSkinController: {fileID: 7904357999704933523}
   purchaseSound: {fileID: 1423690379}
 --- !u!1 &852283900
 GameObject:
@@ -15955,7 +15955,7 @@ MonoBehaviour:
   <BuyItemButton>k__BackingField: {fileID: 364798646}
   <playerSkinScriptableObject>k__BackingField: {fileID: 11400000, guid: 5e45a56c3efaf8e4db7365ad5621f37b, type: 2}
   shopController: {fileID: 1953713356}
-  playerSkinHandler: {fileID: 7904357999704933523}
+  playerSkinController: {fileID: 7904357999704933523}
   purchaseSound: {fileID: 1423690379}
 --- !u!1 &1002491231
 GameObject:
@@ -17597,6 +17597,7 @@ GameObject:
   - component: {fileID: 1093356142}
   - component: {fileID: 1093356144}
   - component: {fileID: 1093356143}
+  - component: {fileID: 1093356145}
   m_Layer: 0
   m_Name: DataPresistenceManager
   m_TagString: Untagged
@@ -17650,6 +17651,21 @@ MonoBehaviour:
   dataPersistenceObjects:
   - {fileID: 71339876}
   - {fileID: 1701122822}
+--- !u!114 &1093356145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093356140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6ebb18e18f78e4fb32fffd843cffc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configFileName: CurrentSkin.json
+  dataPersistenceObjects:
+  - {fileID: 7904357999704933523}
 --- !u!1 &1097609718
 GameObject:
   m_ObjectHideFlags: 0
@@ -20066,7 +20082,7 @@ MonoBehaviour:
   <BuyItemButton>k__BackingField: {fileID: 1702476793}
   <playerSkinScriptableObject>k__BackingField: {fileID: 11400000, guid: b06cf124c33a1864cbe14283ec4b5396, type: 2}
   shopController: {fileID: 1953713356}
-  playerSkinHandler: {fileID: 7904357999704933523}
+  playerSkinController: {fileID: 7904357999704933523}
   purchaseSound: {fileID: 1423690379}
 --- !u!224 &1235476934
 RectTransform:
@@ -30460,7 +30476,7 @@ MonoBehaviour:
   <BuyItemButton>k__BackingField: {fileID: 1773067453}
   <playerSkinScriptableObject>k__BackingField: {fileID: 11400000, guid: 1d063accfab90e84f9ce29d4221ef698, type: 2}
   shopController: {fileID: 1953713356}
-  playerSkinHandler: {fileID: 7904357999704933523}
+  playerSkinController: {fileID: 7904357999704933523}
   purchaseSound: {fileID: 1423690379}
 --- !u!1 &1763268336
 GameObject:
@@ -78092,7 +78108,7 @@ MonoBehaviour:
   <BuyItemButton>k__BackingField: {fileID: 2869174508737350471}
   <playerSkinScriptableObject>k__BackingField: {fileID: 11400000, guid: a1181e9d4db963043b001c95e7788371, type: 2}
   shopController: {fileID: 1953713356}
-  playerSkinHandler: {fileID: 7904357999704933523}
+  playerSkinController: {fileID: 7904357999704933523}
   purchaseSound: {fileID: 1423690379}
 --- !u!224 &2869174508461108058
 RectTransform:
@@ -94269,7 +94285,6 @@ MonoBehaviour:
   - {fileID: 1342352105515547023}
   - {fileID: 1348809773777461471}
   defaultSkinMaterial: {fileID: 2100000, guid: ead3aa92e3f47d54fba56e2788c58e15, type: 2}
-  fileName: CurrentSkin.json
 --- !u!4 &7914317042909807330
 Transform:
   m_ObjectHideFlags: 0

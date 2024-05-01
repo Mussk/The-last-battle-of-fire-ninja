@@ -15,7 +15,7 @@ public class ShopItemUIController : MonoBehaviour
     private ShopController shopController;
 
     [SerializeField]
-    private PlayerSkinHandler playerSkinHandler;
+    private PlayerSkinController playerSkinController;
 
     [SerializeField]
     private SoundPlayer purchaseSound;
@@ -45,9 +45,9 @@ public class ShopItemUIController : MonoBehaviour
 
             shopController.coinsText.text = shopController.CoinsAmountOverall.ToString();
 
-            playerSkinHandler.SetCurrentSkin(playerSkinScriptableObject);
+            playerSkinController.SetCurrentSkin(playerSkinScriptableObject);
 
-            playerSkinHandler.ApplySkin();
+            playerSkinController.ApplySkin();
 
             shopController.CheckPrices();
         }

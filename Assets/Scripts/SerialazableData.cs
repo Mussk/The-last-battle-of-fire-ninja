@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class SerialazableData
+//could be useeful in the future
+public abstract class SerialazableData
 {
    
 }
