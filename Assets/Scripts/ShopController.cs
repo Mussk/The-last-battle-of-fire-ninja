@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
 
-public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
+public class ShopController : BaseController<SkinData>, IUIWindow, IDataPersistence<SkinData>
 {
 
     [field: SerializeField]
@@ -91,9 +91,10 @@ public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
 
     }
 
-    public void LoadData(SerializedData data)
-    {
-        var serializedSkins = data.SkinData;
+    public override void LoadData(SkinData data)
+    {   
+
+        var serializedSkins = data.OwnedSkinsData;
         if(serializedSkins.Count > 0) { 
             
             foreach (var shopItem in shopItems) 
@@ -116,17 +117,25 @@ public class ShopController : MonoBehaviour, IUIWindow, IDataPersistence
             }
         }
     }
-    public void SaveData(ref SerializedData dataToSave)
+    public override void SaveData(ref SkinData dataToSave)
     {
+
         foreach(var skinItemInShop in shopItems) 
         {   
             var skinItemShopProperties = skinItemInShop.playerSkinScriptableObject;
 
             if(skinItemShopProperties.CurrentPrice == 0)
             {
-                dataToSave.SkinData.Add(skinItemShopProperties.Material.name);
+                dataToSave.OwnedSkinsData.Add(skinItemShopProperties.Material.name);
             }
         
         }
     }
+
+    public override void InitDefaultData()
+    {
+        IsDefaultPrices = true;
+    }
+
+   
 }

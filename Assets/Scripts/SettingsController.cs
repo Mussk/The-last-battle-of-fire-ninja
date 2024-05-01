@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class SettingsController : MonoBehaviour, IUIWindow, IDataPersistence
-{
+public class SettingsController : BaseController<SettingsData>, IUIWindow 
+{ 
 
     [field: SerializeField]
     public GameObject UIWindowObject { get; set; }
@@ -12,22 +12,13 @@ public class SettingsController : MonoBehaviour, IUIWindow, IDataPersistence
     [field: SerializeField]
     public Volume UIBlur { get; set; }
 
+    
+    [field: SerializeField]
+    public GraphicsQualitySettingsController GraphicsQualitySettingsController {  get; set; }
 
-    [SerializeField]
-    private VolumeSettingsController volumeSettingsController;
+    [field: SerializeField]
+    public VolumeSettingsController VolumeSettingsController { get; set; }
 
-    public void LoadData(SerializedData data)
-    {
-        if(data is not null)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
-    public void SaveData(ref SerializedData data)
-    {
-        throw new System.NotImplementedException();
-    }
 
     // Start is called before the first frame update
     void Awake()
