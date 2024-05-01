@@ -6,7 +6,7 @@ public abstract class BaseController<T> : MonoBehaviour, IDataPersistence<T>
 {
     public virtual void InitDefaultData()
     {
-        Debug.Log("Hi from base class!");
+        
     }
 
     public virtual void LoadData(T data)
