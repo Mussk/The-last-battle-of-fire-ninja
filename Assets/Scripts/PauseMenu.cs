@@ -22,6 +22,9 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     private SceneManipulationButtons sceneManipulationButtons;
 
     [SerializeField]
+    private GameObject SettingsUI;
+
+    [SerializeField]
     private SoundPlayer soundPlayer;
 
     [Header("Buttons")]
@@ -29,6 +32,8 @@ public class PauseMenu : MonoBehaviour, IUIWindow
     private Button mainMenuButton;
     [SerializeField]
     private Button resumeButton;
+    [SerializeField]
+    private Button settingsButton;
 
 
     
@@ -45,6 +50,7 @@ public class PauseMenu : MonoBehaviour, IUIWindow
 
         resumeButton.onClick.AddListener(UnpauseGameOnClick);
         mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
+        settingsButton.onClick.AddListener(delegate { ShowSettingsWindow(); });
         
 
         
@@ -93,6 +99,17 @@ public class PauseMenu : MonoBehaviour, IUIWindow
         _uIBlur.enabled = false;    
 
         Time.timeScale = 1;
+
+    }
+
+    private void ShowSettingsWindow() 
+    {
+        if (!SettingsUI.activeSelf) 
+        { 
+            SettingsUI.SetActive(true);
+            
+        }
+
 
     }
 }
