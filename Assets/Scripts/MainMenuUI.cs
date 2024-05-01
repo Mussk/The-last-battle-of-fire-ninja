@@ -50,6 +50,8 @@ public class MainMenuUI : MonoBehaviour
     
         settingsUIWindow.gameObject.SetActive(true);
 
+        Time.timeScale = 0;
+
         settingsUIWindow.UIBlur.enabled = true;
 
     }
