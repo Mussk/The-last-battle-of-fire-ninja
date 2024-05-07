@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class SettingsController : BaseController<SettingsData>, IUIWindow 
 { 
@@ -20,10 +21,19 @@ public class SettingsController : BaseController<SettingsData>, IUIWindow
     public VolumeSettingsController VolumeSettingsController { get; set; }
 
 
-    // Start is called before the first frame update
-    void Awake()
+    [Header("Buttons")]
+
+    [SerializeField]
+    private Button HelpButton;
+
+    [SerializeField]
+    private GameObject HelpWindow;
+
+    void Start() 
     {
-        
+
+        HelpButton.onClick.AddListener(delegate { OpenNewWindow(HelpWindow); });
+    
     }
 
     // Update is called once per frame
@@ -31,4 +41,13 @@ public class SettingsController : BaseController<SettingsData>, IUIWindow
     {
         
     }
+
+
+    private void OpenNewWindow(GameObject newWindow) 
+    { 
+    
+        newWindow.SetActive(true);
+    
+    }
+
 }
