@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ResetSkinProgression : MonoBehaviour
+{
+
+    [SerializeField]
+    private Button resetSkinProgressionButton;
+
+    [SerializeField]
+    List<string> configFileNames;
+
+    private void Awake()
+    {
+
+        resetSkinProgressionButton.onClick.AddListener(ResetSkinProgressionOnClick);
+
+    }
+
+    private void ResetSkinProgressionOnClick() 
+    {
+        foreach (var fileName in configFileNames) 
+        {
+
+            string fullPath = Path.Combine(Application.persistentDataPath, fileName);
+
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
+            
+        }
+
+    }
+}
