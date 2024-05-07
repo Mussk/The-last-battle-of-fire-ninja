@@ -11,9 +11,6 @@ public class UIWindowCloseButton : MonoBehaviour
 
     private IUIWindow uiWindow;
 
-    [SerializeField]
-    private Button closeButton;
-
     //maybe change IUIWindow interface to abstract class?
     protected void OnValidate()
     {
@@ -29,7 +26,9 @@ public class UIWindowCloseButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        closeButton.onClick.AddListener(UIWindowCloseButtonOnClick);
+        gameObject.GetComponent<Button>().onClick.AddListener(UIWindowCloseButtonOnClick);
+
+        
     }
 
     // Update is called once per frame
@@ -53,6 +52,7 @@ public class UIWindowCloseButton : MonoBehaviour
         {   
 
             uiWindow.UIBlur.enabled = false;
+
         }
         uiWindow.UIWindowObject.SetActive(false);
 
