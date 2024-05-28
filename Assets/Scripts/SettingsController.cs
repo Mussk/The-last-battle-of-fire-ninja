@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class SettingsController : BaseController<SettingsData>, IUIWindow 
+public class SettingsController : SerializableController<SettingsData>, IUIWindow 
 { 
 
     [field: SerializeField]
@@ -31,8 +31,8 @@ public class SettingsController : BaseController<SettingsData>, IUIWindow
 
     void Start() 
     {
-
-        HelpButton.onClick.AddListener(delegate { OpenNewWindow(HelpWindow); });
+        if(HelpButton is not null)
+            HelpButton.onClick.AddListener(delegate { OpenNewWindow(HelpWindow); });
     
     }
 

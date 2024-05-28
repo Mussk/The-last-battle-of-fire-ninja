@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering;
 
-public class ShopController : BaseController<SkinData>, IUIWindow, IDataPersistence<SkinData>
+public class ShopController : SerializableController<SkinData>, IUIWindow, IDataPersistence<SkinData>
 {
 
     [field: SerializeField]

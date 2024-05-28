@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
 
-public class GraphicsQualitySettingsController : BaseController<SettingsData>, IDataPersistence<SettingsData>
+public class GraphicsQualitySettingsController : SerializableController<SettingsData>, IDataPersistence<SettingsData>
 {
     [SerializeField]
     private TMP_Dropdown graphicsQualtiyDropdown;
@@ -15,18 +15,13 @@ public class GraphicsQualitySettingsController : BaseController<SettingsData>, I
     void Start()
     {
         graphicsQualtiyDropdown.onValueChanged.AddListener(ChangeGraphicsQuality);
+        
     }
-
-    
-    void Awake()
-    {
-        graphicsQualtiyDropdown.value = QualitySettings.GetQualityLevel();    
-    }
-
 
     public override void LoadData(SettingsData data)
     {
         ChangeGraphicsQuality(data.GraphicsQualityValue);
+        graphicsQualtiyDropdown.value = QualitySettings.GetQualityLevel();
     }
 
     public override void SaveData(ref SettingsData dataToSave)

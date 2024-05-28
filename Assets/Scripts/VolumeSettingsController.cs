@@ -7,7 +7,7 @@ using System;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
-public class VolumeSettingsController : BaseController<SettingsData>, IDataPersistence<SettingsData>
+public class VolumeSettingsController : SerializableController<SettingsData>, IDataPersistence<SettingsData>
 {
     [SerializeField]
     private Slider masterVolumeSlider;

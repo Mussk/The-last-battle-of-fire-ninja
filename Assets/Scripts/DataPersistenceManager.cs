@@ -13,7 +13,7 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
     protected T serializedData;
 
     [field: SerializeReference]
-    public List<BaseController<T>> dataPersistenceObjects;
+    public List<SerializableController<T>> dataPersistenceObjects;
 
 
     protected FileDataHandler<T> fileDataHandler;
@@ -44,9 +44,9 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
         {
             Debug.Log("No data was found. Initializing default data.");
                 
-            foreach(BaseController<T> dataPersistentObj in dataPersistenceObjects)
+            foreach(SerializableController<T> dataPersistentObj in dataPersistenceObjects)
             {
-                //here the magic goes...
+                
                 dataPersistentObj.InitDefaultData();
 
             }

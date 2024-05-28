@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerSkinController : BaseController<PlayerCurrentSkinData>, IDataPersistence<PlayerCurrentSkinData>
+public class PlayerSkinController : SerializableController<PlayerCurrentSkinData>, IDataPersistence<PlayerCurrentSkinData>
 {
     [SerializeField]
     private PlayerSkinScriptableObject currentSkinScriptableObject;
