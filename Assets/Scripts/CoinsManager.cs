@@ -26,7 +26,7 @@ public class CoinsManager : MonoBehaviour
     public int coinsAmountDebug = 3000;
     [SerializeField]
     public int CoinsAmountOverall { get => PlayerPrefs.GetInt("CoinsAmountOverall");
-        set => PlayerPrefs.SetInt("CoinsAmountOverall", coinsAmountDebug); }
+        set => PlayerPrefs.SetInt("CoinsAmountOverall", value); }
 
 
     private int _coinsAmountThisGame;

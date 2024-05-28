@@ -33,7 +33,7 @@ public class RotationAnim : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Rotation works");
+       
         mouseOver = true;
        
     }
