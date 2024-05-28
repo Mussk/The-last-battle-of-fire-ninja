@@ -16,6 +16,9 @@ public class MainMenuUI : MonoBehaviour
     private Button settingsButton;
 
     [SerializeField]
+    private Button creditsButton;
+
+    [SerializeField]
     private Button quitButton;
 
     [SerializeField]
@@ -23,6 +26,9 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField]
     private SettingsController settingsUIWindow;
+
+    [SerializeField]
+    private CreditsController creditsUIWindow;
 
     private SceneManipulationButtons sceneManipulationButtons;
 
@@ -32,27 +38,38 @@ public class MainMenuUI : MonoBehaviour
         sceneManipulationButtons = new SceneManipulationButtons(soundPlayer);
 
         playButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(0); });
-        shopButton.onClick.AddListener (delegate { sceneManipulationButtons.LoadNewSceneOnClick(1); });
+        shopButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(1); });
         settingsButton.onClick.AddListener(delegate { OpenSettingsUIWindow(); });
+        creditsButton.onClick.AddListener(delegate { OpenCreditsUIWindow(); });
         quitButton.onClick.AddListener(sceneManipulationButtons.QuitApplication);
 
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
-    private void OpenSettingsUIWindow() 
-    { 
-    
+
+    private void OpenSettingsUIWindow()
+    {
+
         settingsUIWindow.gameObject.SetActive(true);
 
         Time.timeScale = 0;
 
         settingsUIWindow.UIBlur.enabled = true;
+
+    }
+
+    private void OpenCreditsUIWindow()
+    {
+        creditsUIWindow.gameObject.SetActive(true);
+
+        Time.timeScale = 0;
+
+        creditsUIWindow.UIBlur.enabled = true;
 
     }
 
