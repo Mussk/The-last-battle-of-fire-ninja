@@ -2521,7 +2521,7 @@ AudioSource:
   m_GameObject: {fileID: 216611730}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9a3bde9189d4c634abebd6abe7a31262, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3532,7 +3532,7 @@ AudioSource:
   m_GameObject: {fileID: 280979897}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 843b6d957c7904e05b141a997f4f60d3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4438,7 +4438,7 @@ AudioSource:
   m_GameObject: {fileID: 404550147}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4436c8d923b6e4ddea48b58c99e782ca, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -6222,7 +6222,7 @@ AudioSource:
   m_GameObject: {fileID: 700905298}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: d30c820ff550c794a86e903ad647e4ee, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -9199,7 +9199,7 @@ AudioSource:
   m_GameObject: {fileID: 933354528}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7ed99645cac6f06438be178db3df164c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -9471,8 +9471,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: -30
+  far clip plane: 30
   field of view: 60
   orthographic: 1
   orthographic size: 6
@@ -11843,7 +11843,7 @@ AudioSource:
   m_GameObject: {fileID: 1322693936}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4735070770884232076, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2f07c3b7706a64f489133201c2342886, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -12220,7 +12220,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 4977689257323189429, guid: ca2dc033473b7ec4cb6ccc8912a06a19, type: 3}
   - {fileID: 1834024975275355734, guid: 3e6cb3669aee83745932d9d2e5436b76, type: 3}
-  maxSpawnedEnemies: 1
+  maxSpawnedEnemies: 10
 --- !u!4 &1360855742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1823416350814014631, guid: 11c84dc295c17ba45ac88942f96b2093, type: 3}
@@ -13615,7 +13615,7 @@ AudioSource:
   m_GameObject: {fileID: 1557923153}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4f13633ea56974e6dbf63eb99fa6c851, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -13892,9 +13892,9 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570088294}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4735070770884232076, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 826bb8ea4939f9340ba3d55e1120eb1f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -16231,7 +16231,7 @@ AudioSource:
   m_GameObject: {fileID: 1823894611}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1778076929428215416, guid: 9775b24556909e9448828cfa0d5af4f2, type: 2}
   m_audioClip: {fileID: 8300000, guid: e0720535b5cd95040928cc98189783bd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
