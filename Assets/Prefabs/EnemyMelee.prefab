@@ -886,14 +886,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoving: 1
   SFXManager: {fileID: 8372843516458402587}
-  _currentHealth: 0
-  _currentMaxHealth: 0
+  _currentHealth: 150
+  _currentMaxHealth: 150
   moveSpeed: 1
   rotationSpeed: 150
   _healthbar: {fileID: 300038063410583488}
+  _damageAmount: 20
   animator: {fileID: 2498328564368708852}
   animationHandler: {fileID: 2666268049978722629}
   <CoinsReward>k__BackingField: 5
+  gotHitSound: {fileID: 3105014218445987107}
+  attackSound: {fileID: 7029785729255330639}
+  voiceAttackSound: {fileID: 8541796612376073224}
 --- !u!95 &2498328564368708852
 Animator:
   serializedVersion: 4
@@ -928,7 +932,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2498328564368708852}
   character: {fileID: 1353663879602116000}
-  gameEnd: {fileID: 0}
+  gameEndController: {fileID: 0}
+  soundManager: {fileID: 8372843516458402587}
+  deathSound: {fileID: 2111963387131303035}
 --- !u!114 &8372843516458402587
 MonoBehaviour:
   m_ObjectHideFlags: 0

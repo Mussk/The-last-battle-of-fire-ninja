@@ -3918,6 +3918,7 @@ MonoBehaviour:
   isSiphoning: 0
   id: 3
   cooldownDuration: 12
+  _damageAmount: 30
 --- !u!136 &323761605
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26476,7 +26477,6 @@ MonoBehaviour:
     m_Bits: 4
   projectilesSpawner: {fileID: 722890298}
   playerAnimationHandler: {fileID: 7904357999704933521}
-  animationHandler: {fileID: 7904357999704933521}
 --- !u!114 &7904357999704933520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26503,7 +26503,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3466108979336414284}
   character: {fileID: 7904357999704933519}
-  gameEnd: {fileID: 135306509}
+  gameEndController: {fileID: 135306509}
+  soundManager: {fileID: 7904357999704933523}
+  deathSound: {fileID: 700905300}
   playerController: {fileID: 7904357999704933519}
 --- !u!114 &7904357999704933522
 MonoBehaviour:

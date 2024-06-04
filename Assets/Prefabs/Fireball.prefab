@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 622423462858330053}
   - component: {fileID: 139322137132643682}
   - component: {fileID: 5711877021523211241}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FireCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 8511917824708420458}
   - component: {fileID: 3841448319304137527}
   - component: {fileID: 5943960998091098562}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4959,7 +4959,7 @@ GameObject:
   - component: {fileID: 4117767067538022618}
   - component: {fileID: 4117767067538022596}
   - component: {fileID: 4117767067538022597}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9790,7 +9790,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4117767068051404976}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Yellow-FireWood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9827,7 +9827,7 @@ GameObject:
   - component: {fileID: 4117767068175171549}
   - component: {fileID: 4117767068175171551}
   - component: {fileID: 4117767068175171548}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9912,7 +9912,7 @@ GameObject:
   - component: {fileID: 3234383541964203050}
   - component: {fileID: 5010416157415164229}
   - component: {fileID: 8146103686628811694}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fireball
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -10005,6 +10005,7 @@ MonoBehaviour:
   speed: 10
   actor: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  _damageAmount: 150
   id: 2
   cooldownDuration: 5
   destructable:

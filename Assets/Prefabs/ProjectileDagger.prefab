@@ -205,6 +205,6 @@ MonoBehaviour:
   speed: 50
   actor: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
-  _audioSource: {fileID: 0}
+  _damageAmount: 50
   id: 1
   cooldownDuration: 2

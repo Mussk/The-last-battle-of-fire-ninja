@@ -162,3 +162,4 @@ MonoBehaviour:
   speed: 20
   actor: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
+  _damageAmount: 5

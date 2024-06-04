@@ -105,9 +105,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8e8c59bcb5d7047a16cd58b5ceba81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  initialSizeX: 0
+  initialSizeZ: 0
+  maxSizeX: 15
+  maxSizeZ: 15
   id: 4
   cooldownDuration: 10
+  speed: 50
+  _damageAmount: 150
 --- !u!198 &7637613568416483902
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -2275,7 +2275,7 @@ GameObject:
   - component: {fileID: 83924593}
   - component: {fileID: 83924592}
   - component: {fileID: 83924594}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RimLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4378,7 +4378,7 @@ GameObject:
   - component: {fileID: 201942166}
   - component: {fileID: 201942165}
   - component: {fileID: 201942164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -6420,6 +6420,7 @@ MonoBehaviour:
   isSiphoning: 0
   id: 3
   cooldownDuration: 12
+  _damageAmount: 0
 --- !u!136 &323761605
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7606,7 +7607,7 @@ GameObject:
   - component: {fileID: 377534195}
   - component: {fileID: 377534194}
   - component: {fileID: 377534196}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9675,7 +9676,7 @@ TerrainCollider:
   m_Material: {fileID: 13400000, guid: 8771b42a3f4198d47ba9d1e8c113a2fb, type: 2}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 5b81735dacd864d44877f26315bc43e0, type: 2}
-  m_EnableTreeColliders: 0
+  m_EnableTreeColliders: 1
 --- !u!218 &475975368
 Terrain:
   m_ObjectHideFlags: 0
@@ -13734,7 +13735,7 @@ GameObject:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
   - component: {fileID: 705507996}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MainLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17933,7 +17934,7 @@ GameObject:
   - component: {fileID: 905374728}
   - component: {fileID: 905374727}
   - component: {fileID: 905374729}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24463,7 +24464,7 @@ GameObject:
   - component: {fileID: 1273689857}
   - component: {fileID: 1273689856}
   - component: {fileID: 1273689855}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -27962,7 +27963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1440718721}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31194,8 +31195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UIWindowObject>k__BackingField: {fileID: 1618742030}
   <UIBlur>k__BackingField: {fileID: 1971441093}
-  <GraphicsQualitySettingsController>k__BackingField: {fileID: 1701122822}
-  <VolumeSettingsController>k__BackingField: {fileID: 71339876}
   HelpButton: {fileID: 204547581}
   HelpWindow: {fileID: 1865033778}
 --- !u!1 &1619402979
@@ -33715,7 +33714,7 @@ GameObject:
   - component: {fileID: 1706892293}
   - component: {fileID: 1706892292}
   - component: {fileID: 1706892294}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35907,7 +35906,7 @@ GameObject:
   - component: {fileID: 1763268339}
   - component: {fileID: 1763268338}
   - component: {fileID: 1763268337}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -37236,7 +37235,7 @@ GameObject:
   - component: {fileID: 1838743819}
   - component: {fileID: 1838743818}
   - component: {fileID: 1838743817}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -40183,7 +40182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015341967}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -100866,7 +100865,6 @@ MonoBehaviour:
     m_Bits: 4
   projectilesSpawner: {fileID: 722890298}
   playerAnimationHandler: {fileID: 7904357999704933521}
-  animationHandler: {fileID: 7904357999704933521}
 --- !u!114 &7904357999704933520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100893,7 +100891,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3466108979336414284}
   character: {fileID: 7904357999704933519}
-  gameEnd: {fileID: 0}
+  gameEndController: {fileID: 0}
+  soundManager: {fileID: 0}
+  deathSound: {fileID: 0}
   playerController: {fileID: 7904357999704933519}
 --- !u!114 &7904357999704933522
 MonoBehaviour:
