@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class Firestorm : MonoBehaviour, IHasCooldown, IDealDamage
 {
-    private const float initialSizeX = 0;
-    private const float initialSizeZ = 0;
+    [Header("Firestorm sizes")]
+    [SerializeField]
+    private float initialSizeX;
+    [SerializeField]
+    private float initialSizeZ;
+    [SerializeField]
+    private float maxSizeX;
+    [SerializeField]
+    private float maxSizeZ;
 
-    private const float maxSizeX = 15;
-    private const float maxSizeZ = 15;
 
     private Vector3 initialSize;
     private Vector3 maxSize;
-
-    [SerializeField]
-    private float speed;
 
     private float startTime;
 
@@ -26,12 +28,15 @@ public class Firestorm : MonoBehaviour, IHasCooldown, IDealDamage
     private int id = 4;
     [SerializeField]
     private float cooldownDuration = 2.0f;
+    [SerializeField]
+    private float speed;
 
 
     public int Id => id;
 
     public float CooldownDuration => cooldownDuration;
 
+    [SerializeField]
     private int _damageAmount;
     public int DamageAmount => _damageAmount;
 
@@ -46,8 +51,7 @@ public class Firestorm : MonoBehaviour, IHasCooldown, IDealDamage
 
         journeyLength = Vector3.Distance(initialSize, maxSize);
 
-        _damageAmount = 150;
-
+        
     }
 
     // Update is called once per frame

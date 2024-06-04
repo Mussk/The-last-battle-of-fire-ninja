@@ -21,7 +21,7 @@ public class Fireball : PlayerProjectile, IHasCooldown
     {
         base.Start();
 
-        _damageAmount = 150;
+        
         
     }
 
@@ -33,7 +33,7 @@ public class Fireball : PlayerProjectile, IHasCooldown
 
     }
 
-    private void checkAOEDamage() 
+    private void CheckAOEDamage() 
     {
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, 4f, destructable);
@@ -57,7 +57,7 @@ public class Fireball : PlayerProjectile, IHasCooldown
         base.OnTriggerEnter(other);
 
 
-        checkAOEDamage();
+        CheckAOEDamage();
 
     }
 }

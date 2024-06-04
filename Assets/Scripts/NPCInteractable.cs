@@ -13,18 +13,6 @@ public class NPCInteractable : MonoBehaviour, IInteractable
     
     public ShopController ShopUI;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Interact(Transform interactorTransform)
     {

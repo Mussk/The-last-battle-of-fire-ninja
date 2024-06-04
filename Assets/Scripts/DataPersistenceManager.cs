@@ -13,6 +13,7 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
     protected T serializedData;
 
     [field: SerializeReference]
+    //can`t do List<IDataPersistence> besause it is not allowed in Unity (does not show in the inspector)
     public List<SerializableController<T>> dataPersistenceObjects;
 
 

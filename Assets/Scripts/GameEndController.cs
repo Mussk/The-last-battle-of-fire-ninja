@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameEndScript : MonoBehaviour, IUIWindow
+public class GameEndController : MonoBehaviour, IUIWindow
 {
 
     [SerializeField]
@@ -55,8 +50,8 @@ public class GameEndScript : MonoBehaviour, IUIWindow
         gameEndMusic.PlaySound();    
         StopBackgroundLayerSounds();
 
-        CoinsManager.Instance.CoinsAmountOverall = 
-            CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.Instance.CoinsAmountOverall,
+        CoinsManager.CoinsAmountOverall =
+            CoinsManager.Instance.ChangeCoinsAmount(CoinsManager.CoinsAmountOverall,
             CoinsManager.Instance.CoinsAmountThisGame);
 
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IHasHealth
+public abstract class Character : MonoBehaviour, IHasHealth
 {
     [SerializeField]
     public bool isMoving = true;

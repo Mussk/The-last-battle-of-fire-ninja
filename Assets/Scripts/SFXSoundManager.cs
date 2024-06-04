@@ -10,6 +10,13 @@ public class SFXSoundManager : MonoBehaviour
     [SerializeField]
     private Character character;
 
+    private bool deathSoundIsPlayed;
+
+    private void Awake()
+    {
+        deathSoundIsPlayed = false;
+    }
+
     public void PlaySound(string soundName) 
     { 
     
@@ -19,17 +26,18 @@ public class SFXSoundManager : MonoBehaviour
             if (sound.name.Equals(soundName)) 
             {
                 
-                if (character.HealthSystem.currentHealth > 0) 
+                if (character.HealthSystem.CurrentHealth > 0) 
                 {
 
                     sound.Play();
 
                 }
 
-                if(character.HealthSystem.currentHealth == 0 && soundName.EndsWith("DeathSound"))
+                if(character.HealthSystem.CurrentHealth == 0 && soundName.EndsWith("DeathSound") && !deathSoundIsPlayed)
                 {
                     Debug.Log("PlayDeathSound: " + character.name);
                     sound.Play();
+                    deathSoundIsPlayed = true;
                 }
  
             }
@@ -47,16 +55,17 @@ public class SFXSoundManager : MonoBehaviour
             if (sound.name.Equals(soundName))
             {
 
-                if (character.HealthSystem.currentHealth > 0)
+                if (character.HealthSystem.CurrentHealth > 0)
                 {
 
                     sound.PlayDelayed(delay);
 
                 }
 
-                if (character.HealthSystem.currentHealth == 0 && soundName.EndsWith("DeathSound"))
+                if (character.HealthSystem.CurrentHealth == 0 && soundName.EndsWith("DeathSound") && !deathSoundIsPlayed)
                 {
                     sound.PlayDelayed(delay);
+                    deathSoundIsPlayed = true;
                 }
 
             }

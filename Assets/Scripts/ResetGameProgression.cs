@@ -1,10 +1,10 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResetSkinProgression : MonoBehaviour
+public class ResetGameProgression : MonoBehaviour
 {
 
     [SerializeField]
@@ -34,5 +34,7 @@ public class ResetSkinProgression : MonoBehaviour
             
         }
 
+        CoinsManager.CoinsAmountOverall = 0;
+        
     }
 }

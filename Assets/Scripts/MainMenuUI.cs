@@ -39,38 +39,22 @@ public class MainMenuUI : MonoBehaviour
 
         playButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(0); });
         shopButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(1); });
-        settingsButton.onClick.AddListener(delegate { OpenSettingsUIWindow(); });
-        creditsButton.onClick.AddListener(delegate { OpenCreditsUIWindow(); });
+        settingsButton.onClick.AddListener(delegate { ShowUIWindow(settingsUIWindow); });
+        creditsButton.onClick.AddListener(delegate { ShowUIWindow(creditsUIWindow); });
         quitButton.onClick.AddListener(sceneManipulationButtons.QuitApplication);
 
 
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    private void ShowUIWindow(IUIWindow windowToShow)
     {
-
-    }
-
-    private void OpenSettingsUIWindow()
-    {
-
-        settingsUIWindow.gameObject.SetActive(true);
+        windowToShow.UIWindowObject.SetActive(true);
 
         Time.timeScale = 0;
 
-        settingsUIWindow.UIBlur.enabled = true;
-
-    }
-
-    private void OpenCreditsUIWindow()
-    {
-        creditsUIWindow.gameObject.SetActive(true);
-
-        Time.timeScale = 0;
-
-        creditsUIWindow.UIBlur.enabled = true;
-
+        windowToShow.UIBlur.enabled = true;
     }
 
 }

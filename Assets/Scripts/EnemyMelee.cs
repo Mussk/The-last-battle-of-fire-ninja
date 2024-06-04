@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class EnemyMelee : Enemy
 {
+
     // Start is called before the first frame update
     protected override void Start()
     {
         
-        _damageAmount = 20;
-
-        _currentHealth = 150;
-
-        _currentMaxHealth = 150; 
-
         base.Start();
     }
 
@@ -35,12 +30,12 @@ public class EnemyMelee : Enemy
             animator.SetBool("IsAttacking", true);
             isMoving = false;
 
-            float playerCurrentHealth = other.GetComponent<PlayerController>().HealthSystem.currentHealth;
+            float playerCurrentHealth = other.GetComponent<PlayerController>().HealthSystem.CurrentHealth;
 
             if (playerCurrentHealth > 0) {
                 
-                SFXManager.PlaySound("MeleeEnemyAttackVoiceSound");
-                SFXManager.PlaySound("MeleeEnemyAttackWeaponSound", Random.Range(0.1f,0.2f));
+                SFXManager.PlaySound(voiceAttackSound.name);
+                SFXManager.PlaySound(attackSound.name, Random.Range(0.1f,0.2f));
             }
         }
     }

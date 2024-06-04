@@ -14,11 +14,11 @@ public class SettingsController : SerializableController<SettingsData>, IUIWindo
     public Volume UIBlur { get; set; }
 
     
-    [field: SerializeField]
-    public GraphicsQualitySettingsController GraphicsQualitySettingsController {  get; set; }
+   // [field: SerializeField]
+   // public GraphicsQualitySettingsController GraphicsQualitySettingsController {  get; set; }
 
-    [field: SerializeField]
-    public VolumeSettingsController VolumeSettingsController { get; set; }
+  //  [field: SerializeField]
+   // public VolumeSettingsController VolumeSettingsController { get; set; }
 
 
     [Header("Buttons")]

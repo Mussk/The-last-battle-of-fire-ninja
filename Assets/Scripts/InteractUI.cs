@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InteractUI : WorldSpaceUI
 {
-
     [SerializeField]
     private PlayerInteract playerInteract;
 

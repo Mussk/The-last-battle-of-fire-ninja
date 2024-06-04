@@ -37,9 +37,4 @@ public class SceneManipulationButtons
 
     }
 
-    public void PlaySoundOnHover()
-    {
-        soundPlayer.PlaySound();
-    }
-
 }

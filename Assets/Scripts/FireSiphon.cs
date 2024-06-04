@@ -10,32 +10,18 @@ public class FireSiphon : MonoBehaviour, IHasCooldown, IDealDamage
 
     [Header("Settings")]
     [SerializeField]
-    private int id = 3;
+    private int id;
     [SerializeField]
-    private float cooldownDuration = 7.0f;
+    private float cooldownDuration;
 
     public int Id => id;
 
     public float CooldownDuration => cooldownDuration;
 
+    [SerializeField]
     private int _damageAmount;
 
     public int DamageAmount => _damageAmount;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _damageAmount = 30;
-
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public IEnumerator StartSiphon(float duration)

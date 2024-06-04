@@ -8,9 +8,9 @@ public class PlayerProjectile : Projectile, IHasCooldown
    
     [Header("Settings")]
     [SerializeField]
-    private int id = 1;
+    private int id;
     [SerializeField]
-    private float cooldownDuration = 2.0f;
+    private float cooldownDuration;
 
     public int Id => id;
 
@@ -21,11 +21,8 @@ public class PlayerProjectile : Projectile, IHasCooldown
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        actor = GameObject.Find("Player");
+        actor = GameObject.FindGameObjectWithTag("Player");
 
-        _damageAmount = 50;
-
-       
     }
 
     

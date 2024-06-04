@@ -16,17 +16,11 @@ public class EnemyDagger : Enemy, IShootable
     protected override void Start()
     {
         
-        _damageAmount = 10;
-
-        _currentHealth = 100;
-
-        _currentMaxHealth = 100;
-
         enemyProjectile = projectileEnemyDagger.GetComponent<EnemyProjectile>();
 
         enemyProjectile.actor = this.gameObject;
 
-        InvokeRepeating("PlayShootAnimation", 0.5f, 3.0f);
+        InvokeRepeating(nameof(PlayShootAnimation), 0.5f, 3.0f);
 
         base.Start();
 
@@ -49,7 +43,8 @@ public class EnemyDagger : Enemy, IShootable
 
         Instantiate(projectileEnemyDagger, projectilesSpawner.position, transform.rotation);
 
-        SFXManager.PlaySound("BowEnemyArrowShotSound");
+        SFXManager.PlaySound(attackSound.name);
+        
 
     }
 
@@ -76,8 +71,8 @@ public class EnemyDagger : Enemy, IShootable
 
             animator.SetBool("IsShootingBow", true);
             animator.Play("BowShot");
-            SFXManager.PlaySound("BowEnemyVoiceAttackSound", Random.Range(0.1f, 0.3f));
-            SFXManager.PlaySound("BowEnemyStringPullSound");
+            SFXManager.PlaySound(voiceAttackSound.name, Random.Range(0.1f, 0.3f));
+            
             
         }
 

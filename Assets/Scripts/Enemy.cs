@@ -16,6 +16,7 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
     [SerializeField]
     private Healthbar _healthbar;
 
+    [SerializeField]
     protected int _damageAmount;
     public int DamageAmount => _damageAmount;
 
@@ -30,14 +31,23 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
     [field: SerializeField]
     public int CoinsReward { get; private set; }
 
+    [SerializeField]
+    private AudioSource gotHitSound;
+
+    [SerializeField]
+    protected AudioSource attackSound;
+
+    [SerializeField]
+    protected AudioSource voiceAttackSound;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        
-        player = GameObject.Find("Player");
 
-        InitializeHealthSystem(_currentHealth,_currentMaxHealth);
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        InitializeHealthSystem(_currentHealth, _currentMaxHealth);
+
         cachedPos = transform.position;
     }
 
@@ -50,7 +60,8 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
     //move towards player
     private void MoveTowardsPlayer()
     {
-        if (isMoving && Vector3.Distance(player.transform.position, transform.position) > 1) { 
+        if (isMoving && Vector3.Distance(player.transform.position, transform.position) > 1)
+        {
 
             transform.LookAt(player.transform.position);
 
@@ -62,19 +73,20 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
         }
     }
 
-    protected void InitializeHealthSystem(int currentHealth, int currentMaxHealth) 
+    protected void InitializeHealthSystem(int currentHealth, int currentMaxHealth)
     {
         _currentHealth = currentHealth;
         _currentMaxHealth = currentMaxHealth;
 
         healthSystem = new HealthSystem(_currentHealth, _currentMaxHealth, animationHandler, _healthbar);
 
-        
+
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (this.isMoving) { 
+        if (this.isMoving)
+        {
 
             GameObject otherGameObject = other.gameObject;
 
@@ -84,19 +96,19 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
             {
                 PlayRecieveDamageAnimation();
 
-                PlayGotHitSound();
+                SFXManager.PlaySound(gotHitSound.name);
             }
 
-       
+
             if (other.gameObject.CompareTag("Projectile"))
             {
 
                 healthSystem.ChangeHealth(-other.gameObject.GetComponent<Projectile>().DamageAmount);
-   
-        
+
+
             }
 
-        
+
 
             if (other.gameObject.CompareTag("Firestorm"))
             {
@@ -114,50 +126,51 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
         if (other.gameObject.CompareTag("Siphon"))
         {
 
-            StartRecieveDoTDamage(1, other.gameObject.GetComponent<FireSiphon>().DamageAmount);
+            StartRecieveDoTDamage(other.gameObject.GetComponent<FireSiphon>().DamageAmount);
         }
     }
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        
+
     }
 
-   
-    public void StartRecieveDoTDamage(float duration, int damageAmount) 
+
+    public void StartRecieveDoTDamage(int damageAmount)
     {
 
         healthSystem.ChangeHealthOvertime(-damageAmount);
 
     }
 
-    protected void HandleEnemyAnimations(Vector3 prevPos, Vector3 currentPos) 
+    protected void HandleEnemyAnimations(Vector3 prevPos, Vector3 currentPos)
     {
         if (prevPos != currentPos)
         {
 
             animator.SetBool("IsMovingForward", true);
             animator.SetBool("IsIdle", false);
-            
+
         }
         else
         {
 
             animator.SetBool("IsMovingForward", false);
             animator.SetBool("IsIdle", true);
-            
+
         }
-        
-        
+
+
     }
 
     //this method is called by GetHit animation
-    public void RecieveDamageAnimationEvent() 
+    public void RecieveDamageAnimationEvent()
     {
-        if (!animator.GetBool("IsDead")) { 
+        if (!animator.GetBool("IsDead"))
+        {
             isMoving = true;
-            
-           
+
+
         }
     }
 
@@ -171,21 +184,4 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
 
     }
 
-    private void PlayGotHitSound()
-    {
-       
-        if (this is EnemyMelee)
-        {
-
-            SFXManager.PlaySound("MeleeEnemyHitSound");
-
-        }
-        if (this is EnemyDagger)
-        {
-
-            SFXManager.PlaySound("BowEnemyGotHitSound");
-
-        }
-    
-    }
 }

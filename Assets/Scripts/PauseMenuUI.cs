@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour, IUIWindow
+public class PauseMenuUI : MonoBehaviour, IUIWindow
 {
 
     public static bool IsPaused;

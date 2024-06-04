@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class HealthSystem
 {
-    float _currentHealth;
-    float _currentMaxHealth;
+    private float _currentHealth;
 
-    AnimationHandler _animationHanlder;
+    private float _currentMaxHealth;
 
-    private Healthbar _healthbar;
+    private readonly AnimationHandler _animationHanlder;
 
-    private float DoTSpeedMOdifier = 0.5f;
+    private readonly Healthbar _healthbar;
 
-    public float currentHealth
+    private readonly float DoTSpeedModifier = 0.5f;
+
+    public float CurrentHealth
     { 
         get 
         { 
@@ -27,7 +28,7 @@ public class HealthSystem
         }
     }
 
-    public float currentMaxHealth
+    public float CurrentMaxHealth
     {
         get
         {
@@ -67,7 +68,7 @@ public class HealthSystem
 
     public void ChangeHealthOvertime(int value) 
     {
-        _currentHealth = Mathf.MoveTowards(_currentHealth, _currentHealth + value, DoTSpeedMOdifier);
+        _currentHealth = Mathf.MoveTowards(_currentHealth, _currentHealth + value, DoTSpeedModifier);
 
         DamagePostprocessing();
         

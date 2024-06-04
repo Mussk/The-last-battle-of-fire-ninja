@@ -11,9 +11,6 @@ public class PlayerAnimationHandler : AnimationHandler
 
     private Vector3 playerInput;
 
-    
-    //private Animator animator;
-
 
     private AnimatorControllerParameter[] animationParameters;
 
@@ -27,10 +24,10 @@ public class PlayerAnimationHandler : AnimationHandler
     void Update()
     {
         
-        HandleMovementAniamtions();
+        HandleMovementAnimations();
     }
 
-    private void HandleMovementAniamtions()
+    private void HandleMovementAnimations()
     {
         playerInput = playerController.PlayerInput.ToIso();
 

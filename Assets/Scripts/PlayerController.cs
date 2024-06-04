@@ -6,13 +6,15 @@ using Vector3 = UnityEngine.Vector3;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using System.Drawing;
+
 
 public class PlayerController : Character, IShootable, IHasHealth
 {
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Transform _model;
-    [SerializeField] private float _speed = 5;
+    [SerializeField] private float _speed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] Camera _camera;
     
@@ -53,30 +55,23 @@ public class PlayerController : Character, IShootable, IHasHealth
     [SerializeField]
     private PlayerAnimationHandler playerAnimationHandler;
 
-    [SerializeField]
-    public AnimationHandler animationHandler;
-
-    
-
-
     void Awake() 
     {
-        layermask |= (1 << 3);
 
-        layermask = ~layermask;
+        DoLayermaskLogic();
 
-        HealthSystem = new HealthSystem(_currentHealth, _currentMaxHealth, animationHandler, healthbar);
+        HealthSystem = new HealthSystem(_currentHealth, _currentMaxHealth, playerAnimationHandler, healthbar);
 
     }
 
     // Start is called before the first frame update
     void Update()
     {
-        if (HealthSystem.currentHealth > 0 && !PauseMenu.IsPaused) {
+        if (HealthSystem.CurrentHealth > 0 && !PauseMenuUI.IsPaused) {
             
             GatherInput();
             Look();
-            //better to separate Shoot() in other script
+            
             if(SceneManager.GetActiveScene().buildIndex == 0)
                 Shoot();
             
@@ -94,7 +89,16 @@ public class PlayerController : Character, IShootable, IHasHealth
         }
     }
 
-private void GatherInput()
+    private void DoLayermaskLogic() 
+    {
+
+        layermask |= (1 << 3);
+
+        layermask = ~layermask;
+
+    }
+
+    private void GatherInput()
     {
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
@@ -110,15 +114,14 @@ private void GatherInput()
             var target = hitInfo.point;
             target.y = transform.position.y;
             transform.LookAt(target);
-
-           
+            
         }
 
     }
 
     private void Move()
     {
-        _rb.MovePosition(transform.position + _input.ToIso() * _input.normalized.magnitude * _speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + _input.normalized.magnitude * _speed * Time.deltaTime * _input.ToIso());
 
     }
 
@@ -132,7 +135,7 @@ private void GatherInput()
 
 
     //invokes directly from animation (except fire siphon), allows to use other skills
-    //for fir siphon check 
+    //for siphon check 
     public void EndOfAnimationEvent()
     {
 
@@ -158,6 +161,7 @@ private void GatherInput()
 
     }
 
+    //this method is invoked by animation CastFirestorm
     public void CastFirestormAnimationEvent()
     {
 

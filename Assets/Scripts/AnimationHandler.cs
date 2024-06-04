@@ -12,9 +12,17 @@ public class AnimationHandler : MonoBehaviour
     private Character character;
 
     [SerializeField]
-    private GameEndScript gameEnd;
+    private GameEndController gameEndController;
 
-    private bool isSoundPlayed = false;
+    [SerializeField]
+    private SFXSoundManager soundManager;
+
+    [SerializeField]
+    protected AudioSource deathSound;
+
+    
+
+
 
     public void PlayDeathAnimation()
     {
@@ -23,7 +31,7 @@ public class AnimationHandler : MonoBehaviour
         animator.SetBool("IsDead", true);
         animator.Play("Death");
 
-        PlayDeathSound();
+        soundManager.PlaySound(deathSound.name);
 
     }
 
@@ -46,35 +54,9 @@ public class AnimationHandler : MonoBehaviour
         else
         {
             
-            gameEnd.InitializeGameEnd();
+            gameEndController.InitializeGameEnd();
 
         }
     }
 
-    private void PlayDeathSound()
-    {
-        if (!isSoundPlayed) {
-
-            if (character is EnemyMelee)
-            {
-
-                character.SFXManager.PlaySound("MeleeEnemyDeathSound");
-                
-
-            }
-            else if (character is EnemyDagger)
-            {
-
-                character.SFXManager.PlaySound("BowEnemyDeathSound");
-                
-            }
-            else
-            {
-
-                character.SFXManager.PlaySound("PlayerDeathSound");
-                
-            }
-            isSoundPlayed = true;
-        }
-    }
 }

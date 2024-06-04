@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -25,7 +23,7 @@ public class CoinsManager : MonoBehaviour
     }
     public int coinsAmountDebug = 3000;
     [SerializeField]
-    public int CoinsAmountOverall { get => PlayerPrefs.GetInt("CoinsAmountOverall");
+    public static int CoinsAmountOverall { get => PlayerPrefs.GetInt("CoinsAmountOverall");
         set => PlayerPrefs.SetInt("CoinsAmountOverall", value); }
 
 
@@ -49,7 +47,7 @@ public class CoinsManager : MonoBehaviour
 
         CheckCoinsPersistency();
 
-        Debug.Log(CoinsAmountOverall);
+        
 
     }
 
