@@ -13,8 +13,7 @@ public class CameraScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
         WatchPlayer();
     }
