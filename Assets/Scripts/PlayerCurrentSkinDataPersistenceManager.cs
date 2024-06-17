@@ -16,14 +16,23 @@ public class PlayerCurrentSkinDataPersistenceManager : DataPersistenceManager<Pl
         base.Start();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+       
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        
+    }
+
 
     protected override void OnApplicationQuit()
     {
         base.OnApplicationQuit();
     }
 
-    protected override void OnSceneUnloaded(Scene scene)
-    {
-        base.OnSceneUnloaded(scene);
-    }
+   
 }

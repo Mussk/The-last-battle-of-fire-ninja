@@ -32,9 +32,7 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
     }
    
     protected virtual void Start()
-    {   
-       
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    {
 
         LoadData();
     }
@@ -112,11 +110,6 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
 
        
 
-    protected virtual void OnSceneUnloaded(Scene scene)
-    {   
-        SaveData();
-        Debug.Log("Data is saved");
-    }
 
     protected virtual void OnApplicationQuit()
     {
