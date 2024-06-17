@@ -41,7 +41,7 @@ public class UIWindowCloseButton : MonoBehaviour
     private void UIWindowCloseButtonOnClick()
     {   
 
-        if(SceneManager.GetActiveScene().buildIndex == 2) 
+        if(SceneManager.GetActiveScene().buildIndex == 0) 
         {
 
             Time.timeScale = 1;

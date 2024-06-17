@@ -47,7 +47,7 @@ public class PauseMenuUI : MonoBehaviour, IUIWindow
         sceneManipulationButtons = new SceneManipulationButtons(soundPlayer);
 
         resumeButton.onClick.AddListener(UnpauseGameOnClick);
-        mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
+        mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(0); });
         settingsButton.onClick.AddListener(delegate { ShowSettingsWindow(); });
         
 

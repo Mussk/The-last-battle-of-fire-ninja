@@ -38,7 +38,7 @@ public class GameEndController : MonoBehaviour, IUIWindow
 
         newGameButton.onClick.AddListener(sceneManipulationButtons.ReloadCurrenSceneOnClick);
 
-        mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
+        mainMenuButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(0); });
     }
 
     public void InitializeGameEnd()

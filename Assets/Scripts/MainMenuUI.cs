@@ -37,8 +37,8 @@ public class MainMenuUI : MonoBehaviour
     {
         sceneManipulationButtons = new SceneManipulationButtons(soundPlayer);
 
-        playButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(0); });
-        shopButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(1); });
+        playButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(1); });
+        shopButton.onClick.AddListener(delegate { sceneManipulationButtons.LoadNewSceneOnClick(2); });
         settingsButton.onClick.AddListener(delegate { ShowUIWindow(settingsUIWindow); });
         creditsButton.onClick.AddListener(delegate { ShowUIWindow(creditsUIWindow); });
         quitButton.onClick.AddListener(sceneManipulationButtons.QuitApplication);
