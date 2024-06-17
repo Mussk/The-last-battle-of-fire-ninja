@@ -10008,6 +10008,7 @@ MonoBehaviour:
   _damageAmount: 150
   id: 2
   cooldownDuration: 5
+  keyboardKey: 113
   destructable:
     serializedVersion: 2
     m_Bits: 72

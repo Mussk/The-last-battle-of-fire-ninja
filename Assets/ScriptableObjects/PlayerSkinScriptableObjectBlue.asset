@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerSkinModel>k__BackingField: {fileID: 708349873905790000, guid: 9a28b7b561decc14fa38e93381a8d0d9, type: 3}
   <Material>k__BackingField: {fileID: 2100000, guid: 6d393bc0de0b74c4188a4b56df98881c, type: 2}
-  <DefaultPrice>k__BackingField: 600
-  <CurrentPrice>k__BackingField: 0
+  <DefaultPrice>k__BackingField: 300
+  <CurrentPrice>k__BackingField: 300

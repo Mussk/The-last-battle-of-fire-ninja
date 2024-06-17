@@ -208,3 +208,4 @@ MonoBehaviour:
   _damageAmount: 50
   id: 1
   cooldownDuration: 2
+  keyboardKey: 32
