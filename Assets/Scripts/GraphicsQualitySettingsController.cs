@@ -12,6 +12,7 @@ public class GraphicsQualitySettingsController : SerializableController<Settings
     [SerializeField]
     private RenderPipelineAsset[] qualityLevels;
 
+  
     void Start()
     {
         graphicsQualtiyDropdown.onValueChanged.AddListener(ChangeGraphicsQuality);

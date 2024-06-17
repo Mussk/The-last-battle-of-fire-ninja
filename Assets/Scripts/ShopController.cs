@@ -61,7 +61,6 @@ public class ShopController : SerializableController<SkinData>, IUIWindow, IData
     {
         PlayerPrefs.SetInt("CoinsAmountOverall", CoinsAmountOverall);
 
-        Debug.Log(PlayerPrefs.GetInt("CoinsAmountOverall"));
 
         soundPlayer.PlaySound();
     }
@@ -81,7 +80,7 @@ public class ShopController : SerializableController<SkinData>, IUIWindow, IData
             Button button = shopItem.BuyItemButton;
 
             int.TryParse(button.GetComponentInChildren<TextMeshProUGUI>().text, out int price);
-            Debug.Log(price);
+            
             if (CoinsAmountOverall < price)
             {
                 button.interactable = false;

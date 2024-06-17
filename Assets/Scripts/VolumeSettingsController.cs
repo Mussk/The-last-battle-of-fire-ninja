@@ -63,9 +63,7 @@ public class VolumeSettingsController : SerializableController<SettingsData>, ID
     {
         if (data is not null) 
         {
-            Debug.Log("Hi from: " + this.GetType().Name.ToString() + ": " + "LoadData()");
-            Debug.Log("data.MasterVolumeValue: " + data.MasterVolumeValue);
-
+            
             masterVolumeSlider.value = data.MasterVolumeValue;
             musicVolumeSlider.value = data.MusicVolumeValue;
             sfxVolumeSlider.value = data.SFXVolumeValue;
@@ -86,7 +84,6 @@ public class VolumeSettingsController : SerializableController<SettingsData>, ID
 
     public override void SaveData(ref SettingsData dataToSave)
     {
-        Debug.Log("Hi from: " + this.GetType().Name.ToString());
 
         dataToSave.MasterVolumeValue = masterVolumeSlider.value;
         dataToSave.MusicVolumeValue = musicVolumeSlider.value;

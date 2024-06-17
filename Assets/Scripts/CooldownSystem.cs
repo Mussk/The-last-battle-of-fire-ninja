@@ -8,6 +8,7 @@ public class CooldownSystem : MonoBehaviour
     private void Update()
     {
         ProcessCooldown();
+        
     }
 
 
@@ -54,7 +55,7 @@ public class CooldownSystem : MonoBehaviour
         {
             if (cooldowns[i].DecrementCooldown(deltaTime)) 
             { 
-            
+                
                 cooldowns.RemoveAt(i);
 
             }

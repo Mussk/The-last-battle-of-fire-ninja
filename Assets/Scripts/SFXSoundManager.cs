@@ -35,7 +35,7 @@ public class SFXSoundManager : MonoBehaviour
 
                 if(character.HealthSystem.CurrentHealth == 0 && soundName.EndsWith("DeathSound") && !deathSoundIsPlayed)
                 {
-                    Debug.Log("PlayDeathSound: " + character.name);
+                   
                     sound.Play();
                     deathSoundIsPlayed = true;
                 }

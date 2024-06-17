@@ -49,6 +49,7 @@ public abstract class Enemy : Character, IHasHealth, IDealDamage
         InitializeHealthSystem(_currentHealth, _currentMaxHealth);
 
         cachedPos = transform.position;
+        
     }
 
     // Update is called once per frame
