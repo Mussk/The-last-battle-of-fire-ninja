@@ -15,9 +15,11 @@ public class ResetGameProgression : MonoBehaviour
 
     private void Awake()
     {
-
-        resetSkinProgressionButton.onClick.AddListener(ResetSkinProgressionOnClick);
-
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            resetSkinProgressionButton.onClick.AddListener(ResetSkinProgressionOnClickWebGL);
+        #else
+            resetSkinProgressionButton.onClick.AddListener(ResetSkinProgressionOnClick);
+        #endif
     }
 
     private void ResetSkinProgressionOnClick() 
@@ -26,7 +28,7 @@ public class ResetGameProgression : MonoBehaviour
         {
 
             string fullPath = Path.Combine(Application.persistentDataPath, fileName);
-
+     
             if (File.Exists(fullPath))
             {
                 File.Delete(fullPath);
@@ -36,5 +38,17 @@ public class ResetGameProgression : MonoBehaviour
 
         CoinsManager.CoinsAmountOverall = 0;
         
+    }
+
+    private void ResetSkinProgressionOnClickWebGL()
+    {
+        foreach (var fileName in configFileNames)
+        {
+            WebGLStorage.Erase(fileName);
+
+        }
+
+        CoinsManager.CoinsAmountOverall = 0;
+
     }
 }

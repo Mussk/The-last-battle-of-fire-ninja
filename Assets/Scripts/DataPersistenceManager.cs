@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
 {
+     
     [Header("File Storage Config")]
     [SerializeField]
     protected string configFileName;
@@ -16,15 +17,18 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
     //can`t do List<IDataPersistence> besause it is not allowed in Unity (does not show in the inspector)
     public List<SerializableController<T>> dataPersistenceObjects;
 
-
+  
     protected FileDataHandler<T> fileDataHandler;
-    
+
+    //private static DataPersistenceManager<T> _instance;
 
     protected virtual void Awake() 
     {
-
+        
+       
         this.fileDataHandler = new FileDataHandler<T>(Application.persistentDataPath, configFileName);
 
+       
     }
    
     protected virtual void Start()
@@ -35,11 +39,25 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
         LoadData();
     }
 
+    protected virtual void OnEnable()
+    {
+        
+    }
+
+    protected virtual void OnDisable()
+    {
+        SaveData();
+        
+    }
 
     protected void LoadData() 
     {
-      
-        this.serializedData = fileDataHandler.Load();
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            this.serializedData = fileDataHandler.LoadToWebGL();
+        #else
+            this.serializedData = fileDataHandler.Load();
+        #endif
+        
 
         if (this.serializedData == null)
         {
@@ -64,7 +82,7 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
 
         }
 
-        Debug.Log("Loaded skins");
+        Debug.Log("Loaded: " + typeof(T));
   
     }
 
@@ -78,15 +96,21 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
 
             dataPersistenceObj.SaveData(ref serializedData);
 
-            Debug.Log("Saved data:" + dataPersistenceObj.ToString());
-                
+                  
         }
 
-        
-        fileDataHandler.Save(serializedData);
+       
 
+        #if UNITY_WEBGL && !UNITY_EDITOR
+            fileDataHandler.SaveToWebGL(serializedData);
+        #else   
+            fileDataHandler.Save(serializedData);
+        #endif
+
+        Debug.Log("Saved: " + typeof(T));
     }
 
+       
 
     protected virtual void OnSceneUnloaded(Scene scene)
     {   
@@ -97,6 +121,6 @@ public abstract class DataPersistenceManager<T> : MonoBehaviour where T : new()
     protected virtual void OnApplicationQuit()
     {
         SaveData();
-        Debug.Log("Data is saved");
+        
     }
 }

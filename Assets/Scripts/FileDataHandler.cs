@@ -2,8 +2,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using Newtonsoft.Json;
-using System.Linq;
-using System.Collections.Generic;
+
 
 
 public class FileDataHandler<T>
@@ -18,6 +17,30 @@ public class FileDataHandler<T>
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
     }
+
+
+    public T LoadToWebGL() 
+    {
+        string webGLData = WebGLStorage.Load(dataFileName); 
+        T loadedData = default;
+
+        try
+        {
+            loadedData = JsonConvert.DeserializeObject<T>(webGLData);
+
+        }
+        catch (Exception ex)
+        { 
+            
+            Debug.LogError("Error occured when trying to load data from file: " + dataFileName + "\n" + ex);  
+        
+        }
+
+
+        return loadedData;
+    }
+
+
 
     public T Load()
     {
@@ -40,7 +63,7 @@ public class FileDataHandler<T>
                 
                 loadedData = JsonConvert.DeserializeObject<T>(dataToLoad);
 
-                Debug.Log(loadedData.ToString());
+               
             }
             catch (Exception e)
             {
@@ -49,6 +72,24 @@ public class FileDataHandler<T>
             }
         }
         return loadedData;
+    }
+
+
+    public void SaveToWebGL(T data) 
+    {
+        try
+        {
+            string jsonString = JsonConvert.SerializeObject(data);
+
+            WebGLStorage.Save(dataFileName, jsonString);
+
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error occured when trying to save data to file: " + dataFileName + "\n" + e);
+
+        }
+
     }
 
 
