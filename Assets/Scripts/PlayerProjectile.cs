@@ -11,13 +11,16 @@ public class PlayerProjectile : Projectile, IHasCooldown
     private int id;
     [SerializeField]
     private float cooldownDuration;
-
+    [SerializeField]
+    private KeyCode keyboardKey;
+ 
     public int Id => id;
 
     public float CooldownDuration => cooldownDuration;
 
-  
+    public KeyCode KeyboardKey => keyboardKey;
 
+  
     // Start is called before the first frame update
     protected virtual void Start()
     {

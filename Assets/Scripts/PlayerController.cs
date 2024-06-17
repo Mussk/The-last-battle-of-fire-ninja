@@ -72,7 +72,7 @@ public class PlayerController : Character, IShootable, IHasHealth
             GatherInput();
             Look();
             
-            if(SceneManager.GetActiveScene().buildIndex == 0)
+            if(SceneManager.GetActiveScene().buildIndex == 1)
                 Shoot();
             
         }
@@ -173,7 +173,7 @@ public class PlayerController : Character, IShootable, IHasHealth
     {
         if (!isCastingSkill) {         
             
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(dagger.KeyboardKey)) {
 
                 
                 if (cooldownSystem.IsOnCooldown(dagger.Id)) { return; }
@@ -183,10 +183,12 @@ public class PlayerController : Character, IShootable, IHasHealth
                 SFXManager.PlaySound("PlayerDaggerThrowSound");
 
                 cooldownSystem.PutOnCooldown(dagger);
+
+                skillCooldownUI.StartUICooldown(dagger.Id);
          
             }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(fireball.KeyboardKey))
             {
                 if (cooldownSystem.IsOnCooldown(fireball.Id)) { return; }
 
@@ -200,7 +202,7 @@ public class PlayerController : Character, IShootable, IHasHealth
 
             }
 
-            if (Input.GetKeyDown(KeyCode.E)) 
+            if (Input.GetKeyDown(fireSiphon.KeyboardKey)) 
             {
                 
                 if (cooldownSystem.IsOnCooldown(fireSiphon.Id)) { return; }
@@ -222,7 +224,7 @@ public class PlayerController : Character, IShootable, IHasHealth
 
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(firestorm.KeyboardKey))
             {
 
                 if (cooldownSystem.IsOnCooldown(firestorm.Id)) { return; }

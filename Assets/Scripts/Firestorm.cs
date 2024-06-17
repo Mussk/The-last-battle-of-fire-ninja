@@ -14,6 +14,8 @@ public class Firestorm : MonoBehaviour, IHasCooldown, IDealDamage
     private float maxSizeX;
     [SerializeField]
     private float maxSizeZ;
+    [SerializeField]
+    private KeyCode keyboardKey;
 
 
     private Vector3 initialSize;
@@ -33,6 +35,8 @@ public class Firestorm : MonoBehaviour, IHasCooldown, IDealDamage
 
 
     public int Id => id;
+
+    public KeyCode KeyboardKey => keyboardKey;
 
     public float CooldownDuration => cooldownDuration;
 

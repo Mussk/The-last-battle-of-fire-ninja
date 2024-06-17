@@ -13,6 +13,8 @@ public class FireSiphon : MonoBehaviour, IHasCooldown, IDealDamage
     private int id;
     [SerializeField]
     private float cooldownDuration;
+    [SerializeField]
+    private KeyCode keyboardKey;
 
     public int Id => id;
 
@@ -22,6 +24,8 @@ public class FireSiphon : MonoBehaviour, IHasCooldown, IDealDamage
     private int _damageAmount;
 
     public int DamageAmount => _damageAmount;
+
+    public KeyCode KeyboardKey => keyboardKey;
 
 
     public IEnumerator StartSiphon(float duration)

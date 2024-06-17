@@ -8,13 +8,16 @@ public class CooldownData
     public float RemainingTime { get; private set; }
 
     public float initialDuration;
+
+    public KeyCode KeyboardKey { get; }
     
     public CooldownData(IHasCooldown cooldown)
     {
-
+        
         Id = cooldown.Id;
         RemainingTime = cooldown.CooldownDuration;
         initialDuration = cooldown.CooldownDuration;
+        KeyboardKey = cooldown.KeyboardKey;
     }
 
     public bool DecrementCooldown(float deltaTime)
