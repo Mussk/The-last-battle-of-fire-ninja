@@ -15,16 +15,15 @@ public class SkillCooldownUI : MonoBehaviour
 
     public List<TextMeshProUGUI> skillColldownsTexts;
 
+
     // Start is called before the first frame update
     void Start()
     {
         playerCooldownSystem = player.gameObject.GetComponent<CooldownSystem>();
 
-        //playerCooldownSystem.cooldowns.ForEach(e => e.UIcon.fillAmount = 0);
-
         skillIcons.ForEach(e => e.fillAmount = 0);
 
-        skillColldownsTexts.ForEach(e => e.gameObject.SetActive(false));
+        
     }
 
     // Update is called once per frame
@@ -36,9 +35,9 @@ public class SkillCooldownUI : MonoBehaviour
     public void StartUICooldown(int id) 
     {
         
-        skillIcons[id - 2].fillAmount = 1;
-        skillColldownsTexts[id-2].gameObject.SetActive(true);
-        skillColldownsTexts[id - 2].text = playerCooldownSystem.cooldowns.Find(e => e.Id == id)
+        skillIcons[id - 1].fillAmount = 1;
+        skillColldownsTexts[id-1].gameObject.SetActive(true);
+        skillColldownsTexts[id - 1].text = playerCooldownSystem.cooldowns.Find(e => e.Id == id)
             .initialDuration.ToString();
     }
 
@@ -47,11 +46,11 @@ public class SkillCooldownUI : MonoBehaviour
 
         if (playerCooldownSystem.cooldowns.Count > 0)
         {
-            playerCooldownSystem.cooldowns.FindAll(e => e.Id > 1).ForEach(e =>
+            playerCooldownSystem.cooldowns.ForEach(e =>
             {
-                Image image = skillIcons[e.Id - 2];
+                Image image = skillIcons[e.Id - 1];
 
-                TextMeshProUGUI textField = skillColldownsTexts[e.Id - 2];
+                TextMeshProUGUI textField = skillColldownsTexts[e.Id - 1];
 
                 image.fillAmount -= 1 / e.initialDuration * Time.deltaTime;
 
@@ -59,8 +58,10 @@ public class SkillCooldownUI : MonoBehaviour
 
                 if (e.RemainingTime <= 0.1f)
                 {
-                  textField.gameObject.SetActive(false);
-                 image.fillAmount = 0;
+                    
+                    textField.text = e.KeyboardKey.ToString();
+
+                    image.fillAmount = 0;
 
                 }
 
